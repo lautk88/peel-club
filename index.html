@@ -72,7 +72,7 @@ button{font:inherit;color:inherit}
 .chip.holo{background:linear-gradient(90deg,#ffe3f3,#e0f2ff,#e8ffe0,#fff6d0)}
 .meterwrap{display:flex;align-items:center;gap:10px;width:100%;max-width:440px}
 .meterwrap label{font-size:12px;font-weight:900;color:var(--cream);text-shadow:0 2px 0 var(--ink);flex:none}
-.meter{position:relative;flex:1;height:18px;border:3px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:0 3px 0 var(--ink);background:linear-gradient(90deg,#e4f7f1 0 45.8%,#fff3c9 45.8% 83.3%,#ffd9d4 83.3%)}
+.meter{position:relative;flex:1;height:18px;border:3px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:0 3px 0 var(--ink);background:linear-gradient(90deg,#e4f7f1 0 41.7%,#fff3c9 41.7% 83.3%,#ffd9d4 83.3%)}
 .meter .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--teal);border-right:3px solid var(--ink);transition:background .15s}
 .meter .fill:after{content:"";position:absolute;left:0;right:0;top:2px;height:4px;border-radius:3px;background:rgba(255,255,255,.45)}
 .warn{font-weight:900;font-size:15px;color:var(--cream);text-shadow:0 2px 0 var(--ink);min-height:20px;text-align:center}
@@ -168,8 +168,8 @@ button{font:inherit;color:inherit}
     <div class="card">
       <h3>點樣撕？</h3>
       <div class="steps" style="margin-bottom:16px">
-        <div><i style="background:var(--yel)">1</i><span>手指<b>撳住貼紙</b>再拉。撳正<b>邊角</b>最好控制</span></div>
-        <div><i style="background:#e4f7f1">2</i><span><b>慢慢拉</b>：張力表入黃色會留白底，入紅色會撕爛</span></div>
+        <div><i style="background:var(--yel)">1</i><span><b>邊度開始都得</b>。有啲角黐得好實，<b>揭唔起就試第二隻角</b>；硬拉會刮花</span></div>
+        <div><i style="background:#e4f7f1">2</i><span><b>慢慢拉</b>：張力表入黃色會留白底，入紅色會撕爛；黐得實嘅位要再慢啲</span></div>
         <div><i style="background:#d9f1ff">3</i><span>沿住<b>對角</b>向貼紙中間拉最穩陣</span></div>
         <div><i style="background:#ffe3f3">4</i><span>可以中途鬆手，再撳就繼續撕</span></div>
         <div><i class="sw-holo"></i><span>材質唔同手感唔同：膠貼韌、鐳射貼脆</span></div>
@@ -263,11 +263,11 @@ const F_HAND='"Marker Felt","Chalkboard SE","Comic Sans MS","Segoe Print",cursiv
 
 /* Materials: maxV = front speed (units/s ÷ 400) before tension hits 1 */
 const MATS={
-  thermal:{name:'熱感紙',tip:'好易留白底',maxV:1.3,res:1.35,tol:20,tear:1.0,back:'#f2efe6',resCol:'#f7f4ec',gloss:.06},
-  paper:{name:'銅版紙',tip:'中規中矩',maxV:1.7,res:1.0,tol:26,tear:1.0,back:'#fbfaf5',resCol:'#fdfcf8',gloss:.3},
-  kraft:{name:'牛皮紙',tip:'纖維多，易起毛',maxV:1.5,res:1.2,tol:24,tear:1.1,back:'#e9dcc4',resCol:'#e6d6ba',gloss:.04},
-  vinyl:{name:'PVC 膠貼',tip:'韌，可以快少少',maxV:2.6,res:.4,tol:38,tear:.55,back:'#eef1f3',resCol:'rgba(240,244,247,.85)',gloss:.55},
-  holo:{name:'鐳射貼',tip:'稀有！好脆',maxV:1.3,res:.55,tol:28,tear:1.7,back:'#d6d9e0',resCol:'#e4e6ec',gloss:.7,holo:true},
+  thermal:{name:'熱感紙',tip:'好易留白底',maxV:1.0,res:1.35,tol:16,tear:1.0,back:'#f2efe6',resCol:'#f7f4ec',gloss:.06},
+  paper:{name:'銅版紙',tip:'中規中矩',maxV:1.3,res:1.0,tol:22,tear:1.0,back:'#fbfaf5',resCol:'#fdfcf8',gloss:.3},
+  kraft:{name:'牛皮紙',tip:'纖維多，易起毛',maxV:1.15,res:1.2,tol:20,tear:1.1,back:'#e9dcc4',resCol:'#e6d6ba',gloss:.04},
+  vinyl:{name:'PVC 膠貼',tip:'韌，可以快少少',maxV:2.0,res:.4,tol:32,tear:.55,back:'#eef1f3',resCol:'rgba(240,244,247,.85)',gloss:.55},
+  holo:{name:'鐳射貼',tip:'稀有！好脆',maxV:1.0,res:.55,tol:24,tear:1.7,back:'#d6d9e0',resCol:'#e4e6ec',gloss:.7,holo:true},
 };
 const SPEED_NORM=400, GAIN=1.6;
 
@@ -751,9 +751,12 @@ function setupSticker(seed){
   const {cs,gx,gy}=gridOf(w,h);S.cs=cs;S.gx=gx;S.gy=gy;S.cells=[];
   let sx=0,sy=0,best=-1e9;
   for(let j=0;j<gy;j++)for(let i=0;i<gx;i++){const px=(i+.5)*cs,py=(j+.5)*cs;if(alphaAt(S,px,py)>100){
-    const n=.72*vnoise(i/4,j/4,seed)+.28*hash2(i,j,seed+7);S.cells.push({i,j,x:px,y:py,idx:j*gx+i,n,ever:false,res:false});sx+=px;sy+=py;
+    const n=.72*vnoise(i/4,j/4,seed)+.28*hash2(i,j,seed+7);S.cells.push({i,j,x:px,y:py,idx:j*gx+i,n,a:.75+.8*vnoise(px/70,py/70,seed+99),ever:false,res:false});sx+=px;sy+=py;
     const sc=px/w-py/h;if(sc>best){best=sc;S.hintPt={x:px,y:py}}}}
   S.cent={x:sx/S.cells.length,y:sy/S.cells.length};
+  S.adhNow=1;S.tries=0;S.liftMax=Math.hypot(w,h)*.06;
+  S.corners=[[-1,-1],[1,-1],[1,1],[-1,1]].map(([a,b])=>{let best=S.cells[0],bv=-1e9;for(const c of S.cells){const v=a*c.x+b*c.y;if(v>bv){bv=v;best=c}}return{x:best.x,y:best.y,stuck:false}});
+  {const q=mulberry32(seed^0xc0ffee),nStuck=[0,1,1,2,2,3][Math.floor(q()*6)],order=[0,1,2,3].map(i=>[q(),i]).sort((a,b)=>a[0]-b[0]).map(a=>a[1]);order.slice(0,nStuck).forEach(i=>S.corners[i].stuck=true)}
   return S;
 }
 function alphaAt(S,x,y){const ix=Math.floor(x*S.A_),iy=Math.floor(y*S.A_);if(ix<0||iy<0||ix>=S.aw||iy>=S.ah)return 0;return S.alpha[iy*S.aw+ix]}
@@ -771,7 +774,7 @@ function computeCone(S){
   S.u={x:ux*ca-uy*sa,y:ux*sa+uy*ca};S.hw=Math.max((hi-lo)/2,12*Math.PI/180);
 }
 function getFold(S){
-  if(!S.P)return null;let dx=S.P.x-S.P0.x,dy=S.P.y-S.P0.y;const L=Math.hypot(dx,dy);if(L<.5)return null;
+  if(!S.P)return null;let dx=S.P.x-S.P0.x,dy=S.P.y-S.P0.y;let L=Math.hypot(dx,dy);S.pull=L;if(L<.5)return null;if(S.stuck&&L>S.liftMax){dx*=S.liftMax/L;dy*=S.liftMax/L;L=S.liftMax}
   const ux=S.u.x,uy=S.u.y,ang=Math.atan2(ux*dy-uy*dx,ux*dx+uy*dy);S.th=Math.abs(ang)*180/Math.PI;
   if(Math.abs(ang)>S.hw){const a=Math.sign(ang)*S.hw,ca=Math.cos(a),sa=Math.sin(a);dx=(ux*ca-uy*sa)*L;dy=(ux*sa+uy*ca)*L}
   const nx=dx/L,ny=dy/L,mx=S.P0.x+dx/2,my=S.P0.y+dy/2;return{nx,ny,mx,my,md:mx*nx+my*ny,L};
@@ -811,21 +814,42 @@ function update(S,dt){
   // speed measured in screen px so phones and desktops feel the same
   const inst=S.ptr!=null?S.moveAcc*S.k/Math.max(dt,1/240)/2/SPEED_NORM:0;S.moveAcc=0;
   S.v+=(inst-S.v)*(1-Math.exp(-dt/.06));
-  const m=S.mat,T=S.v/m.maxV;S.T=T;
+  // stronger glue under the peel front means you have to slow down there
+  const m=S.mat,T=S.v/m.maxV*S.adhNow;S.T=T;
   const f=getFold(S);S.fold=f;
+  if(S.stuck){
+    // this spot is glued down hard: the edge lifts a little, then gives up
+    if(S.ptr!=null&&S.grabT>.12&&T>.9&&!S.scuffed){S.scuffed=true;scuff(S)}
+    if(S.pull>S.liftMax*2.6){
+      S.state='idle';S.P=null;S.P0=null;S.fold=null;S.ptr=null;S.stuck=false;S.tries++;
+      flashWarn(S.scuffed?'刮花咗！呢度黐得好實，試第二隻角':'揭唔起！呢度黐得好實，試第二隻角');S.scuffed=false;
+      Snd.pop();try{navigator.vibrate&&navigator.vibrate(25)}catch(e){}
+    }
+    Snd.peel(0,0);return;
+  }
   const A=f&&f.L>12?clamp((S.th-m.tol)/35,0,1):0;S.A=A;
   const grace=S.grabT<.12||S.ptr==null;
-  const rl=grace?0:clamp(clamp((T-.55)/.45,0,1)*m.res+A*.8*m.res,0,1);S.rl=rl;
-  if(!grace){if(T>1)S.tearAcc+=(T-1)*dt*m.tear*6;else S.tearAcc=Math.max(0,S.tearAcc-dt*.8)}
+  const rl=grace?0:clamp(clamp((T-.5)/.4,0,1)*m.res+A*.8*m.res,0,1);S.rl=rl;
+  if(!grace){if(T>1)S.tearAcc+=(T-1)*dt*m.tear*8;else S.tearAcc=Math.max(0,S.tearAcc-dt*.8)}
   Snd.peel(S.ptr!=null?S.v/m.maxV:0,T);
   if(!f)return;
-  let peeled=0,dirty=false;
-  for(const c of S.cells){if(c.x*f.nx+c.y*f.ny<f.md){peeled++;if(!c.ever){c.ever=true;if(c.n<rl*.9){c.res=true;S.resCount++;drawResBlob(S.rmctx,c.x,c.y,S.cs,c.i,c.j,S.seed);dirty=true}}}}
+  let peeled=0,dirty=false,na=0,sa=0;
+  for(const c of S.cells){if(c.x*f.nx+c.y*f.ny<f.md){peeled++;if(!c.ever){c.ever=true;na++;sa+=c.a;if(c.n<rl*.9){c.res=true;S.resCount++;drawResBlob(S.rmctx,c.x,c.y,S.cs,c.i,c.j,S.seed);dirty=true}}}}
+  if(na)S.adhNow+=(sa/na-S.adhNow)*.35;
   S.pf=peeled/S.cells.length;
   if(dirty){rebuildDamage(S);Snd.scratch()}
-  if(S.tearAcc>.18&&S.pf>.03){doTear(S);return}
-  if(S.pf>=.93)finishClean(S);
+  if(S.tearAcc>.15&&S.pf>.03){doTear(S);return}
+  if(S.pf>=.96)finishClean(S);
 }
+const adhAt=(S,x,y)=>.75+.8*vnoise(x/70,y/70,S.seed+99);
+// corners near a stuck corner won't lift; along the edges it depends on the glue there
+function isStuck(S,p){
+  const diag=Math.hypot(S.w,S.h);let bc=null,bd=1e9;
+  for(const c of S.corners){const d=Math.hypot(c.x-p.x,c.y-p.y);if(d<bd){bd=d;bc=c}}
+  if(bd<diag*.18)return bc.stuck;
+  return adhAt(S,p.x,p.y)>1.12;
+}
+function scuff(S){let d=false;for(const c of S.cells){if(!c.res&&Math.hypot(c.x-S.P0.x,c.y-S.P0.y)<S.cs*2.2){c.res=true;S.resCount++;drawResBlob(S.rmctx,c.x,c.y,S.cs,c.i,c.j,S.seed);d=true}}if(d){rebuildDamage(S);Snd.scratch()}}
 function makeRec(S,grade,extra){
   return{id:uid(),seed:S.seed,w:S.w,h:S.h,mat:S.spec.mat,kind:S.spec.kind,name:S.spec.name,g:grade,rf:+(S.resCount/S.cells.length).toFixed(4),pf:+(extra.pf||1).toFixed(3),res:encRes(S.cells,S.gx*S.gy),tear:extra.tear||null,t:Date.now()};
 }
@@ -880,7 +904,6 @@ function drawCur(dt,now){
   const small=()=>{g.shadowColor='rgba(20,18,40,.22)';g.shadowBlur=2*DPR;g.shadowOffsetY=1*DPR};
   if(S.state==='idle'||(S.state==='peeling'&&!S.fold)){
     prepFront(S,now);g.save();g.globalAlpha=Math.min(1,ap*2.5);small();g.drawImage(S.front,0,0,w,h);g.restore();
-    if(S.state==='idle'&&G.hint&&ap>=1){const p=S.hintPt,pr=(16+6*Math.sin(now/180))/S.k;g.save();g.strokeStyle='#fff';g.lineWidth=3.5/S.k;g.shadowColor='rgba(0,0,0,.4)';g.shadowBlur=4*DPR;g.beginPath();g.arc(p.x,p.y,pr,0,TAU);g.stroke();g.fillStyle='#fff';g.beginPath();g.arc(p.x,p.y,5/S.k,0,TAU);g.fill();g.restore()}
   }else if(S.state==='peeling'){
     const f=S.fold;prepFront(S,now,f);prepBack(S,f);
     g.save();half(g,f,-1);g.clip();g.globalAlpha=.05;g.drawImage(S.ghost,0,0,w,h);g.globalAlpha=1;g.drawImage(S.resid,0,0,w,h);g.restore();
@@ -926,7 +949,7 @@ cv.addEventListener('pointerdown',e=>{
   S.ptr=e.pointerId;S.down=p;S.grabT=0;S.v=0;S.moveAcc=0;if(S.P)S.base={...S.P};
   try{cv.setPointerCapture(e.pointerId)}catch(_){}
 });
-function startPeel(S,P0){S.state='peeling';S.P0={...P0};S.P={...P0};S.base={...P0};computeCone(S);G.hint=false}
+function startPeel(S,P0){S.state='peeling';S.P0={...P0};S.P={...P0};S.base={...P0};S.pull=0;computeCone(S);S.stuck=isStuck(S,P0);S.scuffed=false;S.adhNow=adhAt(S,P0.x,P0.y)}
 let TP=null;
 function setTP(e){const r=cv.getBoundingClientRect();TP={x:e.clientX-r.left,y:e.clientY-r.top}}
 cv.addEventListener('pointermove',e=>{
@@ -958,13 +981,13 @@ function hud(full){
     const pg=$('#prog');if(pg.children.length!==40)pg.innerHTML='<span></span>'.repeat(40);[...pg.children].forEach((e,i)=>{const r=G.recs[i];e.className=r?({perfect:'p',residue:'r',torn:'t'})[r.g]:(i===G.idx?'c':'')})}
   const S=cur;if(!S)return;
   const T=S.state==='peeling'?S.T:0,fill=clamp(T/1.2,0,1);
-  if(Math.abs(fill-lastFill)>.004){lastFill=fill;const el=$('#hFill');el.style.width=(fill*100)+'%';el.style.background=T>1?'#ff5a4e':T>.55?'#ffcf33':'#2fb5a9'}
+  if(Math.abs(fill-lastFill)>.004){lastFill=fill;const el=$('#hFill');el.style.width=(fill*100)+'%';el.style.background=T>1?'#ff5a4e':T>.5?'#ffcf33':'#2fb5a9'}
   if(performance.now()<warnUntil)return;
-  if(S.state==='idle')setWarn('撳住貼紙，慢慢拉開佢','');
+  if(S.state==='idle')setWarn(S.tries?`試吓第二隻角（試咗 ${S.tries} 次）`:'揀個位，試吓揭起佢','');
   else if(S.state==='peeling'){
     if(S.ptr==null)setWarn(`撳住繼續撕 · ${Math.round(S.pf*100)}%`,'');
     else if(T>1)setWarn('太快！要爛喇！','bad');
-    else if(T>.55)setWarn('慢啲…會留白底','mid');
+    else if(T>.5)setWarn('慢啲…會留白底','mid');
     else if(S.A>0)setWarn('方向偏咗，向貼紙中間拉','mid');
     else setWarn(`好！保持呢個速度 · ${Math.round(S.pf*100)}%`,'ok');
   }else setWarn('','');
