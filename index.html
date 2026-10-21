@@ -119,12 +119,70 @@ button{font:inherit;color:inherit}
 .tray{position:relative;background:var(--cream);border-top:3px solid var(--ink);border-radius:22px 22px 0 0;padding:14px 0 max(10px,env(safe-area-inset-bottom));box-shadow:0 -8px 20px rgba(20,18,40,.2)}
 .tray::before{content:"";position:absolute;left:50%;top:6px;width:44px;height:5px;margin-left:-22px;border-radius:3px;background:rgba(29,27,46,.2)}
 .trayhd{display:flex;justify-content:space-between;align-items:baseline;padding:0 16px 6px;font-size:13px;font-weight:800}
-.trayhd .tip{opacity:.55;font-weight:600;font-size:12px}
+.trayhd .tip2{opacity:.55;font-weight:600;font-size:12px}
 .traylist{display:flex;gap:10px;overflow-x:auto;padding:6px 16px 8px;touch-action:pan-x;min-height:90px;align-items:center;scrollbar-width:none}
 .traylist::-webkit-scrollbar{display:none}
 .thumb{position:relative;flex:none;width:78px;height:78px;display:grid;place-items:center;background:#fff;border:2.5px solid var(--ink);border-radius:16px;cursor:pointer;box-shadow:0 3px 0 var(--ink)}
 .thumb canvas{height:auto;max-width:84%;max-height:84%;pointer-events:none;filter:drop-shadow(0 2px 1.5px rgba(30,25,40,.25))}
 .trayempty{font-size:14px;opacity:.6;padding:22px 0}
+
+/* ===== v2: sticker surgery ===== */
+.hud.top{flex-wrap:wrap;row-gap:8px}
+.chipd{display:flex;align-items:center;gap:6px;background:var(--cream);border:2.5px solid var(--ink);border-radius:20px;padding:4px 10px;font-weight:900;font-size:13px;box-shadow:0 3px 0 var(--ink);white-space:nowrap}
+.coin{width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6c2 0 20%,#ffcf33 22%,#e0a400);border:2px solid var(--ink);display:inline-block}
+.combo{background:var(--pink)}
+.jobstrip{flex-basis:100%;display:flex;align-items:center;gap:8px;background:rgba(29,27,46,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--cream);border-radius:14px;padding:6px 10px;font-size:12.5px;font-weight:700;line-height:1.35}
+.jobstrip .av{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--cream);display:grid;place-items:center;font-weight:900;color:var(--ink);font-size:13px}
+.jobstrip .req{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.jobstrip .tm{flex:none;font-weight:900;font-variant-numeric:tabular-nums;background:rgba(255,247,232,.15);border-radius:10px;padding:2px 7px}
+.jobstrip .tm.late{background:var(--red)}
+.cond{display:inline-block;font-size:11px;font-weight:900;padding:1px 7px;border-radius:8px;background:var(--yel);color:var(--ink);margin-left:4px}
+.hud.bot .tools,.hud.bot .actrow,.hud.bot .act{pointer-events:auto}
+.actrow{display:flex;align-items:center;gap:10px;width:100%;max-width:460px}
+.actrow .meter{flex:1}
+.mlabel{font-size:12px;font-weight:900;color:var(--cream);text-shadow:0 2px 0 var(--ink);flex:none;min-width:36px}
+.act{flex:none;font-weight:900;font-size:14px;padding:8px 14px;border:3px solid var(--ink);border-radius:12px;background:var(--yel);box-shadow:0 4px 0 var(--ink);cursor:pointer;white-space:nowrap}
+.act:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.act.hide{display:none}
+.tools{display:flex;gap:6px;justify-content:center}
+.tool{position:relative;width:58px;height:58px;border:3px solid var(--ink);border-radius:16px;background:var(--cream);box-shadow:0 4px 0 var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10.5px;font-weight:900;padding:0;cursor:pointer;transition:transform .08s}
+.tool svg{width:28px;height:28px;stroke:var(--ink);stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.tool.on{background:var(--yel);transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.tool.off{display:none}
+.tool .lv{position:absolute;top:-7px;right:-7px;font-size:10px;background:var(--pink);border:2px solid var(--ink);border-radius:8px;padding:0 4px;line-height:14px}
+.modal .card.job{max-width:360px;text-align:left}
+.cust{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.cust .av{width:52px;height:52px;border-radius:50%;border:3px solid var(--ink);display:grid;place-items:center;font-size:22px;font-weight:900;box-shadow:0 3px 0 var(--ink)}
+.cust b{font-size:18px}.cust small{display:block;opacity:.6;font-weight:800}
+.bubble{position:relative;background:#fff;border:2.5px solid var(--ink);border-radius:16px;padding:10px 12px;font-size:15px;font-weight:700;line-height:1.5;margin-bottom:12px}
+.bubble:before{content:"";position:absolute;left:22px;top:-10px;width:14px;height:14px;background:#fff;border-left:2.5px solid var(--ink);border-top:2.5px solid var(--ink);transform:rotate(45deg)}
+.jobprev{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.jobprev canvas{height:auto;filter:drop-shadow(0 4px 4px rgba(20,18,40,.3))}
+.jobprev .meta{font-size:13px;font-weight:800;line-height:1.7}
+.stars{font-size:42px;letter-spacing:4px;text-align:center;line-height:1;margin:6px 0 4px}
+.stars{display:flex;justify-content:center;gap:6px}
+.stars i{display:inline-block;width:46px;height:46px}
+.stars svg{width:100%;height:100%;fill:#ece4d4;stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round}
+.stars i.on svg{fill:var(--yel)}
+.stars i.on{animation:pop .45s cubic-bezier(.3,1.7,.5,1) both}
+@keyframes pop{from{transform:scale(.2) rotate(-30deg);opacity:0}}
+.brk{display:grid;grid-template-columns:auto 1fr auto;gap:6px 10px;align-items:center;font-size:13px;font-weight:800;margin:12px 0}
+.brk .bar{height:10px}
+.res-title{text-align:center;font-size:24px;font-weight:900;margin:0}
+.res-coin{display:flex;justify-content:center;align-items:center;gap:8px;font-size:20px;font-weight:900;margin:6px 0 2px}
+.bar{height:10px;border:2px solid var(--ink);border-radius:6px;background:#fff;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--teal)}
+.tip{position:absolute;left:50%;bottom:190px;transform:translateX(-50%);max-width:min(92vw,420px);background:var(--cream);border:3px solid var(--ink);border-radius:14px;box-shadow:0 4px 0 var(--ink);padding:9px 12px;font-size:13.5px;font-weight:700;line-height:1.45;pointer-events:none;opacity:0;transition:opacity .25s;z-index:4}
+.tip.show{opacity:1}
+.tip b{color:#c2185b}
+.shoplist{display:grid;gap:10px;margin:10px 0 14px}
+.shopitem{display:flex;align-items:center;gap:10px;background:#fff;border:2.5px solid var(--ink);border-radius:14px;padding:8px 10px}
+.shopitem svg{width:32px;height:32px;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.shopitem .d{flex:1;font-size:12px;font-weight:700;line-height:1.4}
+.shopitem .d b{font-size:14px}
+.shopitem .act{font-size:13px;padding:6px 10px}
+.shopitem .act[disabled]{opacity:.4;pointer-events:none}
+.rank{display:inline-block;background:var(--pink);border:2.5px solid var(--ink);border-radius:20px;padding:3px 12px;font-weight:900;font-size:13px;box-shadow:0 3px 0 var(--ink)}
 </style>
 </head>
 <body>
@@ -136,13 +194,14 @@ button{font:inherit;color:inherit}
   <div class="stats" id="homeBest"></div>
   <div class="card">
     <div class="steps">
-      <div><i style="background:var(--yel)">40</i><span>一局 40 張貼紙，睇吓你撕得幾靚</span></div>
-      <div><i style="background:#ffd9d4">!</i><span>拉得<b>太快</b>會撕爛，<b>方向唔啱</b>會留白底</span></div>
-      <div><i style="background:#d9f1ff">簿</i><span>撕完自動入<b>貼紙簿</b>：撕成點，就貼成點</span></div>
+      <div><i style="background:var(--yel)">∞</i><span>客人一單接一單，<b>隨時停工</b>，進度自動儲存</span></div>
+      <div><i style="background:#ffd9d4">✂</i><span>指甲、鉗、風筒、除膠劑、刮片、膠紙，<b>揀啱工具</b>先撕得靚</span></div>
+      <div><i style="background:#d9f1ff">★</i><span>原張撕出嚟、表面冇殘膠，攞三星賺錢升級工具</span></div>
     </div>
   </div>
   <div class="homebtns">
-    <button class="btn" id="btnStart">開始挑戰 <small>40 張</small></button>
+    <button class="btn" id="btnStart">開工</button>
+    <button class="btn alt" id="btnShop">工具箱</button>
     <button class="btn alt" id="btnAlbum">貼紙簿</button>
   </div>
 </section>
@@ -151,55 +210,66 @@ button{font:inherit;color:inherit}
 <section id="game" class="screen">
   <canvas id="cv"></canvas>
   <div class="hud top">
-    <button class="ib" id="btnQuit" title="返主頁"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <div class="count"><b id="hIdx">1</b>/40</div>
-    <div class="tally"><span class="t-p"><i></i><b id="hP">0</b></span><span class="t-r"><i></i><b id="hR">0</b></span><span class="t-t"><i></i><b id="hT">0</b></span></div>
+    <button class="ib" id="btnStop" title="停工"><svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg></button>
+    <span class="chipd" id="hJob">第 1 單</span>
+    <div style="margin-left:auto"></div>
+    <span class="chipd combo" id="hCombo" style="display:none"></span>
+    <span class="chipd"><i class="coin"></i><b id="hCoins">0</b></span>
     <div class="ib book" id="hBook" title="貼紙簿"><svg viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M5 17a3 3 0 013-3h11"/></svg></div>
     <button class="ib" id="btnMute" title="聲音"><svg viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6L8 10z"/><path d="M16.5 9a4 4 0 010 6"/></svg></button>
-    <div class="prog" id="prog"></div>
+    <div class="jobstrip" id="jobStrip"><span class="av" id="jsAv"></span><span class="req" id="jsReq"></span><span class="tm" id="jsTm">0s</span></div>
   </div>
   <div class="hud bot">
-    <div class="chip" id="hMat"></div>
-    <div class="meterwrap"><label>張力</label><div class="meter"><div class="fill" id="hFill"></div></div></div>
     <div class="warn" id="hWarn"></div>
-  </div>
-  <div class="toast" id="toast"></div>
-  <div class="modal" id="tut">
-    <div class="card">
-      <h3>點樣撕？</h3>
-      <div class="steps" style="margin-bottom:16px">
-        <div><i style="background:var(--yel)">1</i><span><b>邊度開始都得</b>。有啲角黐得好實，<b>夾硬撕好易爛</b>，不如試第二隻角</span></div>
-        <div><i style="background:#e4f7f1">2</i><span><b>慢慢拉</b>：張力表入黃色會留白底，入紅色會撕爛；黐得實嘅位要再慢啲</span></div>
-        <div><i style="background:#d9f1ff">3</i><span>沿住<b>對角</b>向貼紙中間拉最穩陣</span></div>
-        <div><i style="background:#ffe3f3">4</i><span>鬆手後撳返<b>揭起嗰塊</b>繼續；撳<b>第二個位</b>就貼返落去重新揭</span></div>
-        <div><i class="sw-holo"></i><span>材質唔同手感唔同：膠貼韌、鐳射貼脆</span></div>
-      </div>
-      <button class="btn" id="btnTut" style="width:100%">知道，開始撕！</button>
+    <div class="actrow"><span class="mlabel" id="mLabel">張力</span><div class="meter"><div class="fill" id="hFill"></div></div><button class="act hide" id="btnAct">完成</button></div>
+    <div class="tools" id="tools">
+      <button class="tool" data-tool="finger"><svg viewBox="0 0 32 32"><path d="M12 29V12a3 3 0 016 0v6"/><path d="M18 15a2.5 2.5 0 015 0v5"/><path d="M23 18a2.5 2.5 0 015 .5V22c0 4-3 7-7 7h-4c-3 0-5-2-6-4l-3-5a2.2 2.2 0 013.5-2.6L12 20"/><path d="M13.5 9.5c.5-1 2.5-1 3 0"/></svg>指甲</button>
+      <button class="tool" data-tool="tweezers"><svg viewBox="0 0 32 32"><path d="M27 4L9 22l-3 6"/><path d="M28 5L11 24l-5 4"/><path d="M20 9l3 3"/></svg>鉗</button>
+      <button class="tool" data-tool="heat"><svg viewBox="0 0 32 32"><circle cx="20" cy="12" r="7"/><circle cx="20" cy="12" r="2.5"/><path d="M13 12H5M6 9v6"/><path d="M19 19l-2 9h5l1-8"/></svg>風筒</button>
+      <button class="tool" data-tool="scraper"><svg viewBox="0 0 32 32"><path d="M6 20l14-14 6 6-14 14z"/><path d="M6 20l6 6"/><path d="M14 12l6 6"/></svg>刮片</button>
+      <button class="tool" data-tool="spray"><svg viewBox="0 0 32 32"><path d="M11 13h9v15H11z"/><path d="M13 13V9h5v4"/><path d="M13 9l-2-4h8"/><path d="M23 6l3-1M23 9h4M23 12l3 1"/></svg>除膠</button>
+      <button class="tool" data-tool="tape"><svg viewBox="0 0 32 32"><circle cx="14" cy="16" r="9"/><circle cx="14" cy="16" r="4"/><path d="M14 25h14v-5"/></svg>膠紙</button>
     </div>
   </div>
+  <div class="tip" id="tip"></div>
+  <div class="toast" id="toast"></div>
+
+  <div class="modal" id="jobCard"><div class="card job">
+    <div class="cust"><div class="av" id="jcAv"></div><div><b id="jcName"></b><small id="jcNo"></small></div></div>
+    <div class="bubble" id="jcReq"></div>
+    <div class="jobprev"><canvas id="jcCv"></canvas><div class="meta" id="jcMeta"></div></div>
+    <button class="btn" id="btnAccept" style="width:100%">接單</button>
+  </div></div>
+
+  <div class="modal" id="resCard"><div class="card job">
+    <p class="res-title" id="rsTitle"></p>
+    <div class="stars" id="rsStars"></div>
+    <div class="res-coin" id="rsCoin"></div>
+    <div class="brk" id="rsBrk"></div>
+    <div style="display:grid;gap:10px">
+      <button class="btn" id="btnNext">下一單</button>
+      <button class="btn alt" id="btnStop2">停工休息</button>
+    </div>
+  </div></div>
+
+  <div class="modal" id="sumCard"><div class="card job" style="text-align:center">
+    <p class="res-title">今日收工</p>
+    <div id="sumBody" style="margin:10px 0 14px"></div>
+    <div style="display:grid;gap:10px">
+      <button class="btn" id="btnResume">繼續開工</button>
+      <button class="btn alt" id="btnHome">返主頁</button>
+    </div>
+  </div></div>
 </section>
 
-<!-- RESULT -->
-<section id="result" class="screen">
-  <div class="logowrap"><div class="logo">完成！</div></div>
-  <div class="card" style="text-align:center">
-    <div style="font-weight:800;opacity:.6;font-size:13px">完美率</div>
-    <div class="big" id="rRate">0%</div>
-    <div id="rBest" style="margin-top:8px"></div>
-    <div class="rrow">
-      <div class="p"><small>完美</small><span id="rP">0</span></div>
-      <div><small>有殘留</small><span id="rR">0</span></div>
-      <div class="t"><small>撕爛</small><span id="rT">0</span></div>
-      <div><small>最長連擊</small><span id="rC">0</span></div>
-      <div style="grid-column:span 2"><small>總分</small><span id="rS">0</span></div>
-    </div>
-    <div class="grid" id="rGrid"></div>
-  </div>
-  <div class="homebtns">
-    <button class="btn" id="btnToAlbum">去貼紙簿貼</button>
-    <button class="btn alt" id="btnAgain">再嚟一局</button>
-    <button class="btn alt" id="btnHome2">返主頁</button>
-  </div>
+<!-- SHOP -->
+<section id="shop" class="screen">
+  <div class="modal on" style="background:none"><div class="card job">
+    <p class="res-title">工具箱</p>
+    <div class="res-coin"><i class="coin"></i><span id="shopCoins">0</span></div>
+    <div class="shoplist" id="shopList"></div>
+    <button class="btn alt" id="btnShopBack" style="width:100%">返回</button>
+  </div></div>
 </section>
 
 <!-- ALBUM -->
@@ -223,7 +293,7 @@ button{font:inherit;color:inherit}
     </div>
   </div>
   <div class="tray">
-    <div class="trayhd"><span>未貼 <b id="trayN">0</b> 張</span><span class="tip">撳一下 / 向上拖 · 揀中可以拖、轉、縮放</span></div>
+    <div class="trayhd"><span>未貼 <b id="trayN">0</b> 張</span><span class="tip2">撳一下 / 向上拖 · 揀中可以拖、轉、縮放</span></div>
     <div class="traylist" id="trayList"></div>
   </div>
 </section>
@@ -610,13 +680,199 @@ function jagLine(c,t,w,h){const p=jagPts(t,w,h);c.moveTo(p[0][0],p[0][1]);for(co
 function rainbow(c,w,h,lx,tm){const g=c.createLinearGradient(0,h,w,0);for(let i=0;i<=6;i++)g.addColorStop(i/6,`hsl(${(i*55+lx*300+tm*25)%360},95%,62%)`);return g}
 function sheenGrad(c,w,h,lx,a){const g=c.createLinearGradient(-.5*w,-.5*h,1.5*w,1.5*h),p=clamp(lx*1.4-.2,-.3,1.3),o=(p+.5)/2;const W='rgba(255,255,255,';g.addColorStop(0,W+'0)');g.addColorStop(o-.1,W+'0)');g.addColorStop(o-.03,W+(a*.35)+')');g.addColorStop(o,W+a+')');g.addColorStop(o+.025,W+(a*.35)+')');g.addColorStop(o+.09,W+'0)');g.addColorStop(1,W+'0)');return g}
 
+/* ================= kawaii stickers ================= */
+const INK2='#3a2b45';
+const PAST=['#ff9ec7','#ffc09f','#ffe27a','#9ee6c4','#9fd8ff','#c9b6ff','#ff8a9a','#b8f0a8','#ffd1e8','#a8e6ff'];
+const F_ROUND='"Arial Rounded MT Bold","Hiragino Maru Gothic ProN","Yu Gothic UI","Arial Black","PingFang HK","Noto Sans TC",sans-serif';
+// blur by down/up-scaling, then re-threshold alpha: smooth, crisp die-cut edge
+function smoothAlpha(c,f,ramp=5){const w=c.width,h=c.height,t=mkCanvas(Math.max(1,w/f),Math.max(1,h/f)),tx=t.getContext('2d');tx.imageSmoothingQuality='high';tx.drawImage(c,0,0,t.width,t.height);
+  const x=c.getContext('2d');x.clearRect(0,0,w,h);x.imageSmoothingQuality='high';x.drawImage(t,0,0,w,h);t.width=t.height=0;
+  const id=x.getImageData(0,0,w,h),d=id.data;for(let i=0;i<d.length;i+=4){d[i]=d[i+1]=d[i+2]=255;d[i+3]=clamp((d[i+3]-128)*ramp+128,0,255)}x.putImageData(id,0,0)}
+// any artwork -> die-cut sticker with a rounded white border
+function dieCutCanvas(w,h,B,ppu,drawArt){
+  const W=Math.ceil(w*ppu),H=Math.ceil(h*ppu),art=mkCanvas(W,H),a=art.getContext('2d');
+  a.setTransform(ppu,0,0,ppu,0,0);a.lineJoin='round';a.lineCap='round';drawArt(a);
+  const bd=mkCanvas(W,H),b=bd.getContext('2d'),R=B*ppu;
+  for(const r2 of[R*.35,R*.7,R])for(let k=0;k<32;k++){const t=k/32*TAU;b.drawImage(art,Math.cos(t)*r2,Math.sin(t)*r2)}
+  smoothAlpha(bd,Math.max(2,Math.round(R/5)),2.6);
+  const out=mkCanvas(W,H),o=out.getContext('2d');
+  o.shadowColor='rgba(60,40,80,.28)';o.shadowBlur=Math.max(1,ppu*1.4);o.shadowOffsetY=ppu*.5;o.drawImage(bd,0,0);o.shadowColor='transparent';
+  o.drawImage(art,0,0);art.width=bd.width=0;return out;
+}
+function dieCutDraw(w,h,B,drawArt){const cache=new Map();return c=>{const m=c.getTransform(),ppu=Math.hypot(m.a,m.b)||1,k=Math.round(ppu*50);let cv=cache.get(k);if(!cv){cv=dieCutCanvas(w,h,B,ppu,drawArt);cache.set(k,cv)}c.drawImage(cv,0,0,w,h)}}
+function kface(c,x,y,s,o){
+  o=o||{};const e=s*.058;
+  for(const d of[-1,1]){c.fillStyle=INK2;c.beginPath();c.ellipse(x+d*s*.24,y,e,e*1.3,0,0,TAU);c.fill();c.fillStyle='#fff';c.beginPath();c.arc(x+d*s*.24+e*.35,y-e*.5,e*.42,0,TAU);c.fill()}
+  c.fillStyle='rgba(255,120,160,.55)';for(const d of[-1,1]){c.beginPath();c.ellipse(x+d*s*.4,y+s*.14,s*.1,s*.06,0,0,TAU);c.fill()}
+  if(o.mouth!==false){c.save();c.strokeStyle=INK2;c.lineWidth=s*.035;c.lineCap='round';for(const d of[-1,1]){c.beginPath();c.arc(x+d*s*.048,y+s*.1,s*.048,.1*Math.PI,.9*Math.PI);c.stroke()}c.restore()}
+}
+function sparkle2(c,x,y,r,fill){c.save();c.beginPath();poly(c,x,y,r,r*.34,4,-Math.PI/2);c.lineJoin='round';c.lineWidth=r*.35;c.strokeStyle=INK2;c.stroke();c.fillStyle=fill;c.fill();c.restore()}
+// [half width, top, bottom] in units of s, for laying out the die-cut box
+const CHX={bunny:[.66,-1.2,.98],bear:[.7,-.6,.98],cat:[.98,-.68,.98],chick:[.76,-.72,.88],flower:[.9,-.9,.9],mushroom:[.84,-.66,.74],star:[.95,-.92,.88],heart:[.92,-.68,.78],cloud:[.94,-.72,.74],boba:[.76,-1.16,1.0]};
+const CHN={bunny:'兔仔',bear:'熊仔',cat:'貓仔',chick:'小雞',flower:'花花',mushroom:'菇菇',star:'星星',heart:'心心',cloud:'雲朵',boba:'珍奶'};
+const CH={
+  bunny(c,x,y,s,col){
+    for(const[d,r]of[[-1,-.18],[1,.2]]){c.save();c.translate(x+d*s*.24,y-s*.36);c.rotate(r);c.beginPath();c.ellipse(0,-s*.38,s*.16,s*.42,0,0,TAU);c.fillStyle=col;c.fill();c.stroke();c.beginPath();c.ellipse(0,-s*.36,s*.075,s*.29,0,0,TAU);c.fillStyle='#ffbfd6';c.fill();c.restore()}
+    c.fillStyle=col;c.beginPath();c.ellipse(x,y+s*.62,s*.4,s*.33,0,0,TAU);c.fill();c.stroke();
+    c.beginPath();c.ellipse(x,y,s*.6,s*.5,0,0,TAU);c.fill();c.stroke();
+    for(const d of[-1,1]){c.beginPath();c.ellipse(x+d*s*.3,y+s*.6,s*.11,s*.14,0,0,TAU);c.fill();c.stroke()}
+    kface(c,x,y+s*.06,s);
+  },
+  bear(c,x,y,s,col){
+    for(const d of[-1,1]){c.beginPath();c.arc(x+d*s*.45,y-s*.36,s*.2,0,TAU);c.fillStyle=col;c.fill();c.stroke();c.beginPath();c.arc(x+d*s*.45,y-s*.36,s*.1,0,TAU);c.fillStyle='rgba(255,255,255,.5)';c.fill()}
+    c.fillStyle=col;c.beginPath();c.ellipse(x,y+s*.62,s*.42,s*.33,0,0,TAU);c.fill();c.stroke();
+    c.beginPath();c.ellipse(x,y,s*.62,s*.52,0,0,TAU);c.fill();c.stroke();
+    for(const d of[-1,1]){c.beginPath();c.ellipse(x+d*s*.32,y+s*.6,s*.11,s*.14,0,0,TAU);c.fill();c.stroke()}
+    c.beginPath();c.ellipse(x,y+s*.17,s*.22,s*.15,0,0,TAU);c.fillStyle='#fff4e6';c.fill();c.save();c.lineWidth=s*.03;c.stroke();c.restore();
+    c.beginPath();c.ellipse(x,y+s*.11,s*.07,s*.05,0,0,TAU);c.fillStyle=INK2;c.fill();
+    kface(c,x,y-s*.04,s,{mouth:false});
+    c.save();c.lineWidth=s*.03;c.beginPath();c.arc(x-s*.045,y+s*.19,s*.045,.1*Math.PI,.9*Math.PI);c.stroke();c.beginPath();c.arc(x+s*.045,y+s*.19,s*.045,.1*Math.PI,.9*Math.PI);c.stroke();c.restore();
+  },
+  cat(c,x,y,s,col){
+    c.save();c.lineWidth=s*.16;c.beginPath();c.moveTo(x+s*.3,y+s*.78);c.quadraticCurveTo(x+s*.95,y+s*.72,x+s*.82,y+s*.28);c.stroke();c.lineWidth=s*.08;c.strokeStyle=col;c.stroke();c.restore();
+    for(const d of[-1,1]){c.beginPath();c.moveTo(x+d*s*.56,y-s*.08);c.lineTo(x+d*s*.5,y-s*.62);c.lineTo(x+d*s*.12,y-s*.42);c.closePath();c.fillStyle=col;c.fill();c.stroke();c.beginPath();c.moveTo(x+d*s*.46,y-s*.2);c.lineTo(x+d*s*.45,y-s*.5);c.lineTo(x+d*s*.24,y-s*.38);c.closePath();c.fillStyle='#ffbfd6';c.fill()}
+    c.fillStyle=col;c.beginPath();c.ellipse(x,y+s*.62,s*.4,s*.33,0,0,TAU);c.fill();c.stroke();
+    c.beginPath();c.ellipse(x,y,s*.62,s*.5,0,0,TAU);c.fill();c.stroke();
+    c.save();c.strokeStyle='rgba(58,43,69,.35)';c.lineWidth=s*.04;for(const d of[-1,0,1]){c.beginPath();c.moveTo(x+d*s*.12,y-s*.46);c.lineTo(x+d*s*.1,y-s*.32);c.stroke()}c.restore();
+    c.save();c.lineWidth=s*.025;for(const d of[-1,1])for(const k of[-1,1]){c.beginPath();c.moveTo(x+d*s*.5,y+s*.12+k*s*.04);c.lineTo(x+d*s*.76,y+s*.1+k*s*.1);c.stroke()}c.restore();
+    kface(c,x,y+s*.05,s);
+  },
+  chick(c,x,y,s){
+    c.fillStyle='#ffe07a';
+    for(const k of[-1,0,1]){c.beginPath();c.ellipse(x+k*s*.1,y-s*.55,s*.06,s*.14,k*.5,0,TAU);c.fill();c.stroke()}
+    for(const d of[-1,1]){c.beginPath();c.ellipse(x+d*s*.56,y+s*.22,s*.14,s*.22,d*.6,0,TAU);c.fill();c.stroke()}
+    c.beginPath();c.ellipse(x,y+s*.08,s*.62,s*.6,0,0,TAU);c.fill();c.stroke();
+    c.fillStyle='#ffa04d';c.beginPath();c.moveTo(x-s*.1,y+s*.14);c.lineTo(x,y+s*.06);c.lineTo(x+s*.1,y+s*.14);c.lineTo(x,y+s*.24);c.closePath();c.fill();c.save();c.lineWidth=s*.03;c.stroke();c.restore();
+    kface(c,x,y-s*.02,s,{mouth:false});
+  },
+  flower(c,x,y,s,col,col2){for(let i=0;i<6;i++){const a=i/6*TAU-Math.PI/2;c.beginPath();c.arc(x+Math.cos(a)*s*.5,y+Math.sin(a)*s*.5,s*.34,0,TAU);c.fillStyle=i%2?col2:col;c.fill();c.stroke()}c.beginPath();c.arc(x,y,s*.42,0,TAU);c.fillStyle='#ffe07a';c.fill();c.stroke();kface(c,x,y+s*.02,s*.72)},
+  mushroom(c,x,y,s,col){
+    c.beginPath();rr(c,x-s*.3,y-s*.05,s*.6,s*.72,s*.24);c.fillStyle='#fff4e6';c.fill();c.stroke();
+    c.beginPath();c.moveTo(x-s*.78,y+s*.06);c.bezierCurveTo(x-s*.82,y-s*.8,x+s*.82,y-s*.8,x+s*.78,y+s*.06);c.quadraticCurveTo(x,y+s*.22,x-s*.78,y+s*.06);c.closePath();c.fillStyle=col;c.fill();c.stroke();
+    c.fillStyle='#fff';for(const[dx,dy,r]of[[-.4,-.2,.12],[.08,-.4,.14],[.45,-.12,.1],[-.08,-.08,.07]]){c.beginPath();c.arc(x+dx*s,y+dy*s,r*s,0,TAU);c.fill()}
+    kface(c,x,y+s*.38,s*.55);
+  },
+  star(c,x,y,s,col){c.save();c.beginPath();poly(c,x,y+s*.06,s*.8,s*.42,5,-Math.PI/2);c.lineWidth=s*.24;c.stroke();c.lineWidth=s*.15;c.strokeStyle=col;c.stroke();c.fillStyle=col;c.fill();c.restore();kface(c,x,y+s*.12,s*.78)},
+  heart(c,x,y,s,col){c.beginPath();c.moveTo(x,y+s*.68);c.bezierCurveTo(x-s*1.05,y-s*.02,x-s*.62,y-s*.85,x,y-s*.36);c.bezierCurveTo(x+s*.62,y-s*.85,x+s*1.05,y-s*.02,x,y+s*.68);c.closePath();c.fillStyle=col;c.fill();c.stroke();c.fillStyle='rgba(255,255,255,.6)';c.beginPath();c.ellipse(x-s*.42,y-s*.28,s*.12,s*.07,-.7,0,TAU);c.fill();kface(c,x,y-s*.02,s*.78)},
+  cloud(c,x,y,s,col){const C=[[-.46,.12,.36],[0,-.16,.48],[.46,.08,.4],[.04,.26,.4]];c.save();c.beginPath();for(const[a,b,r]of C){c.moveTo(x+a*s+r*s,y+b*s);c.arc(x+a*s,y+b*s,r*s,0,TAU)}c.lineWidth=s*.1;c.stroke();c.fillStyle=col;c.fill();c.restore();kface(c,x,y+s*.08,s*.8)},
+  boba(c,x,y,s){
+    const T=()=>{c.beginPath();c.moveTo(x-s*.56,y-s*.48);c.lineTo(x+s*.56,y-s*.48);c.lineTo(x+s*.43,y+s*.92);c.lineTo(x-s*.43,y+s*.92);c.closePath()};
+    c.beginPath();rr(c,x+s*.06,y-s*1.08,s*.15,s*.5,s*.07);c.fillStyle='#ff9ec7';c.fill();c.stroke();
+    T();c.fillStyle='#e8c39e';c.fill();c.save();T();c.clip();c.fillStyle='rgba(255,255,255,.35)';c.fillRect(x-s,y-s*.48,s*2,s*.2);c.fillStyle='#4a2e24';for(let i=0;i<9;i++){c.beginPath();c.arc(x-s*.32+(i%5)*s*.16+(i>4?s*.08:0),y+s*.78-(i>4?s*.15:0),s*.075,0,TAU);c.fill()}c.restore();T();c.stroke();
+    c.beginPath();rr(c,x-s*.68,y-s*.7,s*1.36,s*.26,s*.12);c.fillStyle='#fff4e6';c.fill();c.stroke();
+    kface(c,x,y+s*.2,s*.8);
+  },
+};
+function drawChar(c,kind,x,y,s,col,col2){c.save();c.lineJoin='round';c.lineCap='round';c.strokeStyle=INK2;c.lineWidth=s*.05;CH[kind](c,x,y,s,col,col2||col);c.restore()}
+function acc(c,k,x,y,s){c.save();c.lineJoin='round';c.lineCap='round';c.strokeStyle=INK2;c.lineWidth=s*.13;
+  if(k==='heart'){c.beginPath();c.moveTo(x,y+s*.6);c.bezierCurveTo(x-s*.95,y,x-s*.55,y-s*.75,x,y-s*.3);c.bezierCurveTo(x+s*.55,y-s*.75,x+s*.95,y,x,y+s*.6);c.fillStyle='#ff7a9a';c.fill();c.stroke()}
+  if(k==='flower'){for(let i=0;i<5;i++){const a=i/5*TAU;c.beginPath();c.arc(x+Math.cos(a)*s*.45,y+Math.sin(a)*s*.45,s*.36,0,TAU);c.fillStyle='#ffb3d1';c.fill();c.stroke()}c.beginPath();c.arc(x,y,s*.3,0,TAU);c.fillStyle='#ffe07a';c.fill();c.stroke()}
+  if(k==='star'){c.beginPath();poly(c,x,y,s*.8,s*.38,5,-Math.PI/2);c.fillStyle='#ffe07a';c.fill();c.stroke()}
+  if(k==='lolly'){c.beginPath();c.moveTo(x,y+s*.3);c.lineTo(x,y+s*1.05);c.stroke();c.beginPath();c.arc(x,y,s*.5,0,TAU);c.fillStyle='#9fd8ff';c.fill();c.stroke();c.strokeStyle='#fff';c.lineWidth=s*.12;c.beginPath();c.arc(x,y,s*.24,0,Math.PI*1.5);c.stroke()}
+  c.restore()}
+function genKawaii(seed){
+  const r=mulberry32(seed);
+  const kind=(()=>{let x=r()*100;for(const[k,wt]of[['char',40],['duo',14],['scene',20],['text',12],['deco',14]]){if((x-=wt)<0)return k}return'char'})();
+  const B=11,M=B+7,mat=matPick(r,[['vinyl',.45],['holo',.32],['paper',.23]]);
+  const chars=Object.keys(CHX),col=pick(r,PAST),col2=pick(r,PAST.filter(c=>c!==col));
+  let w,h,draw,name;
+  if(kind==='char'||kind==='deco'){
+    const ch=kind==='deco'?pick(r,['flower','mushroom','star','heart','cloud']):pick(r,chars);
+    const s=kind==='deco'?54:rint(r,84,96),ac=kind==='char'&&r()<.55&&!['flower','star','heart','cloud'].includes(ch)?pick(r,['heart','flower','star','lolly']):null;
+    let[hw,tp,bt]=CHX[ch];if(ac)hw=Math.max(hw,.74);
+    w=Math.round(hw*2*s+M*2);h=Math.round((bt-tp)*s+M*2);const x=w/2,y=M-tp*s;
+    name=CHN[ch]+(kind==='deco'?'小貼':'貼紙');
+    draw=c=>{drawChar(c,ch,x,y,s,col,col2);if(ac)acc(c,ac,x+s*.42,y+s*.55,s*.26)};
+  }else if(kind==='duo'){
+    const a=pick(r,['bunny','bear','cat','chick']),b=pick(r,['bunny','bear','cat','chick','boba']),s=64;
+    const[h1,t1,b1]=CHX[a],[h2,t2,b2]=CHX[b],rng=Math.max(b1-t1,b2-t2);
+    const x1=M+h1*s,x2=x1+(h1+h2)*s-.22*s;w=Math.round(x2+h2*s+M);const Btm=M+rng*s;h=Math.round(Btm+M);
+    name=`${CHN[a]}同${CHN[b]}`;
+    draw=c=>{drawChar(c,b,x2,Btm-b2*s,s,col2,col);drawChar(c,a,x1,Btm-b1*s,s,col,col2)};
+  }else if(kind==='scene'){
+    const fr=pick(r,['heart','round','cloud']);w=fr==='heart'?280:290;h=fr==='heart'?262:212;
+    const chs=[pick(r,['bunny','bear','chick','cat']),pick(r,['bunny','bear','chick','cat'])],txt=pick(r,['peace, everywhere','have a nice day','sunny day','好天氣','慢慢嚟']);
+    const fl=Array.from({length:7},()=>[r(),r(),pick(r,PAST)]),sky=pick(r,[['#9fd8ff','#e3f6ff'],['#ffc6dd','#fff0f6'],['#c9b6ff','#f1ebff']]);
+    const P=c=>{const x0=M,y0=M,W=w-M*2,H=h-M*2;if(fr==='round')rr(c,x0,y0,W,H,34);else if(fr==='heart'){const x=w/2;c.moveTo(x,y0+H);c.bezierCurveTo(x0-W*.08,y0+H*.48,x0+W*.08,y0-H*.12,x,y0+H*.22);c.bezierCurveTo(x0+W*.92,y0-H*.12,x0+W*1.08,y0+H*.48,x,y0+H)}else{for(const[a,b,q]of[[.2,.38,.24],[.42,.3,.28],[.64,.3,.27],[.84,.42,.22],[.5,.58,.4],[.22,.66,.3],[.8,.66,.3]]){c.moveTo(x0+a*W+q*H,y0+b*H);c.arc(x0+a*W,y0+b*H,q*H,0,TAU)}}};
+    name='風景貼紙';
+    draw=c=>{c.save();c.beginPath();P(c);c.lineWidth=8;c.strokeStyle=INK2;c.stroke();c.clip();
+      const gr=c.createLinearGradient(0,M,0,h-M);gr.addColorStop(0,sky[0]);gr.addColorStop(1,sky[1]);c.fillStyle=gr;c.fillRect(0,0,w,h);
+      ['#ff9ec7','#ffe07a','#9ee6c4','#9fd8ff'].forEach((cc,i)=>{c.beginPath();c.arc(w*.5,h*.7,w*.36-i*9,Math.PI,TAU);c.lineWidth=9;c.strokeStyle=cc;c.stroke()});
+      c.fillStyle='#fff';for(const[a,b]of[[.24,.3],[.78,.27]])for(const[dx,dy,q]of[[-12,0,10],[0,-6,13],[12,0,10]]){c.beginPath();c.arc(w*a+dx,h*b+dy,q,0,TAU);c.fill()}
+      c.lineWidth=3.5;c.strokeStyle=INK2;c.fillStyle='#a6e88f';c.beginPath();c.ellipse(w*.28,h*.99,w*.46,h*.3,0,0,TAU);c.fill();c.stroke();c.fillStyle='#86d977';c.beginPath();c.ellipse(w*.8,h*1.03,w*.42,h*.3,0,0,TAU);c.fill();c.stroke();
+      for(const[a,b,cc]of fl){const fx=w*(.1+a*.8),fy=h*(.78+b*.12);for(let i=0;i<5;i++){const t=i/5*TAU;c.beginPath();c.arc(fx+Math.cos(t)*4.5,fy+Math.sin(t)*4.5,3.6,0,TAU);c.fillStyle=cc;c.fill()}c.beginPath();c.arc(fx,fy,2.6,0,TAU);c.fillStyle='#ffe07a';c.fill()}
+      drawChar(c,chs[0],w*.36,h*.6,30,col,col2);drawChar(c,chs[1],w*.64,h*.63,27,col2,col);
+      c.fillStyle=INK2;c.font=`900 16px ${F_ROUND}`;c.textAlign='center';c.textBaseline='middle';c.fillText(txt,w/2,h*(fr==='heart'?.36:.2));
+      c.restore()};
+  }else{
+    const word=pick(r,['PEACE','LOVE','HAPPY','YAY!','CUTE','好正','開心','加油','LUCKY']),cjk=/[㐀-鿿]/.test(word),fs=cjk?66:62;
+    MC.font=`900 ${fs}px ${F_ROUND}`;const L=[...word],ws=L.map(ch=>MC.measureText(ch).width),off=rint(r,0,9),rots=L.map(()=>(r()-.5)*.24);
+    w=Math.round(ws.reduce((a,b)=>a+b,0)+L.length*2+M*2+18);h=Math.round(fs*1.25+M*2+16);name=`「${word}」字貼`;
+    draw=c=>{c.font=`900 ${fs}px ${F_ROUND}`;c.textAlign='center';c.textBaseline='middle';let x=M+9;
+      L.forEach((ch,i)=>{const cx=x+ws[i]/2,cy=h/2+Math.sin(i*1.4)*5;c.save();c.translate(cx,cy);c.rotate(rots[i]);c.lineWidth=12;c.strokeStyle=INK2;c.strokeText(ch,0,0);c.fillStyle=PAST[(i+off)%PAST.length];c.fillText(ch,0,0);c.save();c.beginPath();c.rect(-ws[i],-fs*.62,ws[i]*2,fs*.4);c.clip();c.fillStyle='rgba(255,255,255,.45)';c.fillText(ch,0,0);c.restore();c.restore();x+=ws[i]+2});
+      sparkle2(c,M+5,M+6,9,'#ffe07a');sparkle2(c,w-M-6,h-M-6,7,'#9fd8ff')};
+  }
+  return{w,h,mat,name,kind,draw:dieCutDraw(w,h,B,draw)};
+}
+const LABEL_KINDS=['ship','price','sku','warn','fruit','stamp','ticket','price'];
+function genSticker2(seed,pool){
+  if(pool==='label'){const r=mulberry32(seed),kind=pick(r,LABEL_KINDS),s=GEN[kind](r);s.seed=seed;s.kind=kind;s.pool='label';return s}
+  const s=genKawaii(seed);s.seed=seed;s.pool='kawaii';return s;
+}
+/* ================= residue: torn paper fibre + old glue ================= */
+const RU=1.25; // sticker units per residue pixel
+function fibreNoise(ux,uy,sd){return .55*vnoise(ux/7,uy/7,sd+3)+.3*vnoise(ux/2.6,uy/2.6,sd+4)+.15*vnoise(ux/1.1,uy/1.1,sd+5)}
+function bil(A,gx,k,tx,ty){return(A[k]*(1-tx)+A[k+1]*tx)*(1-ty)+(A[k+gx]*(1-tx)+A[k+gx+1]*tx)*ty}
+function prepResidue(S){
+  const rw=Math.ceil(S.w/RU),rh=Math.ceil(S.h/RU),N=rw*rh,sd=S.seed;S.rw=rw;S.rh=rh;
+  S.n1=new Float32Array(N);S.n2=new Float32Array(N);S.n3=new Float32Array(N);S.inside=new Uint8Array(N);
+  for(let y=0;y<rh;y++)for(let x=0;x<rw;x++){const i=y*rw+x,ux=x*RU,uy=y*RU;S.n1[i]=fibreNoise(ux,uy,sd);S.n2[i]=.6*vnoise(ux/11,uy/11,sd+6)+.4*vnoise(ux/3.5,uy/3.5,sd+7);S.n3[i]=hash2(x,y,sd+8);S.inside[i]=alphaAt(S,ux,uy)>90?1:0}
+  const n=S.gx*S.gy;S.GR=new Float32Array(n);S.GG=new Float32Array(n);S.GW=new Float32Array(n);
+  S.rcv=mkCanvas(rw,rh);S.rctx=S.rcv.getContext('2d');S.rimg=S.rctx.createImageData(rw,rh);
+}
+// paper patches: a soft per-cell amount pushed through fibrous noise -> ragged, organic tear shapes
+function residuePixel(pr,n1){return pr*1.3-n1*.7-.18}
+function renderResidue(S){
+  const{rw,rh,gx,gy,cs,n1,n2,n3,inside,GR,GG,GW}=S,d=S.rimg.data;
+  GR.fill(0);GG.fill(0);GW.fill(0);for(const c of S.cells){GR[c.idx]=c.res;GG[c.idx]=c.glue;GW[c.idx]=c.wet}
+  let dirt=0;
+  for(let y=0;y<rh;y++){const fy=clamp(y*RU/cs-.5,0,gy-1.001),y0=fy|0,ty=fy-y0;
+    for(let x=0;x<rw;x++){const i=y*rw+x,o=i*4;if(!inside[i]){d[o+3]=0;continue}
+      const fx=clamp(x*RU/cs-.5,0,gx-1.001),x0=fx|0,tx=fx-x0,k=y0*gx+x0;
+      const pr=bil(GR,gx,k,tx,ty),gl=bil(GG,gx,k,tx,ty),wt=bil(GW,gx,k,tx,ty);
+      let r=0,g=0,b=0,a=0;
+      const gv=gl*1.25-n2[i]*.55;
+      if(gv>0){const ga=clamp(gv*2.4,0,1);r=226;g=204;b=136;a=.2+.42*ga;if(n3[i]>.988&&gv>.12){r=104;g=92;b=78;a=.85}else if(n3[i]<.05){r=246;g=236;b=200;a+=.15}}
+      const pv=residuePixel(pr,n1[i]);
+      if(pv>0){const e=clamp(pv*7,0,1),rim=pv<.05?.8:1,t=.9+.13*n3[i];r=244*t*rim;g=240*t*rim;b=231*t*rim;a=.5+.5*e}
+      if(wt>.04){if(a>0){r*=1-wt*.3;g*=1-wt*.22;b=b*(1-wt*.08)+wt*18;a=Math.min(1,a+wt*.12)}else{r=205;g=220;b=236;a=wt*.28}if(n3[i]>.992&&wt>.35){r=g=b=255;a=.55}}
+      if(a>.15&&(pv>0||gv>0))dirt++;
+      d[o]=r;d[o+1]=g;d[o+2]=b;d[o+3]=a*255}}
+  S.rctx.putImageData(S.rimg,0,0);
+  S.dirtPx=dirt;
+}
+// the same tear shapes, seen from the sticker side: print torn away, paper fibre showing
+function damageCanvas(w,h,seed,idxs){
+  const{cs,gx,gy}=gridOf(w,h),R=new Float32Array(gx*gy);for(const i of idxs)if(i<R.length)R[i]=1;
+  const rw=Math.ceil(w/RU),rh=Math.ceil(h/RU),c=mkCanvas(rw,rh),x=c.getContext('2d'),im=x.createImageData(rw,rh),d=im.data;
+  for(let y=0;y<rh;y++){const fy=clamp(y*RU/cs-.5,0,gy-1.001),y0=fy|0,ty=fy-y0;
+    for(let xx=0;xx<rw;xx++){const fx=clamp(xx*RU/cs-.5,0,gx-1.001),x0=fx|0,tx=fx-x0,pr=bil(R,gx,y0*gx+x0,tx,ty);if(pr<=0)continue;
+      const pv=residuePixel(pr,fibreNoise(xx*RU,y*RU,seed));if(pv<=0)continue;
+      const o=(y*rw+xx)*4,t=.9+.12*hash2(xx,y,seed+8),rim=pv<.05?.78:1;d[o]=246*t*rim;d[o+1]=242*t*rim;d[o+2]=234*t*rim;d[o+3]=255*(.6+.4*clamp(pv*7,0,1))}}
+  x.putImageData(im,0,0);return c;
+}
+function burnCanvas(w,h,idxs,dark){const{gx,gy}=gridOf(w,h),c=mkCanvas(gx,gy),x=c.getContext('2d'),im=x.createImageData(gx,gy),d=im.data;for(const i of idxs){if(i>=gx*gy)continue;d[i*4]=dark?35:120;d[i*4+1]=dark?28:72;d[i*4+2]=dark?24:40;d[i*4+3]=dark?220:110}x.putImageData(im,0,0);return c}
+function encBits(cells,n,f){const b=new Uint8Array(Math.ceil(n/4));for(const c of cells)if(f(c))b[c.idx>>2]|=1<<(c.idx&3);return Array.from(b,v=>v.toString(16)).join('')}
+
 /* Render a collected sticker exactly as it was peeled */
 function renderRecord(rec,ppu){
-  const spec=genSticker(rec.seed),w=spec.w,h=spec.h,art=renderArt(spec,ppu);
+  const spec=genSticker2(rec.seed,rec.pool||'kawaii'),w=spec.w,h=spec.h,art=renderArt(spec,ppu);
   const out=mkCanvas(art.width,art.height),o=out.getContext('2d');o.drawImage(art,0,0);
-  if(MATS[spec.mat].holo){o.setTransform(ppu,0,0,ppu,0,0);o.globalCompositeOperation='overlay';o.globalAlpha=.6;o.fillStyle=rainbow(o,w,h,.35,0);o.fillRect(0,0,w,h);o.globalCompositeOperation='screen';o.globalAlpha=1;o.fillStyle=sheenGrad(o,w,h,.45,.5);o.fillRect(0,0,w,h);o.setTransform(1,0,0,1,0,0);o.globalCompositeOperation='destination-in';o.drawImage(art,0,0)}
+  if(MATS[spec.mat].holo){o.setTransform(ppu,0,0,ppu,0,0);o.globalCompositeOperation='overlay';o.globalAlpha=.5;o.fillStyle=rainbow(o,w,h,.35,0);o.fillRect(0,0,w,h);o.globalCompositeOperation='screen';o.globalAlpha=1;o.fillStyle=sheenGrad(o,w,h,.45,.5);o.fillRect(0,0,w,h);o.setTransform(1,0,0,1,0,0);o.globalCompositeOperation='destination-in';o.drawImage(art,0,0)}
+  o.globalCompositeOperation='source-atop';o.globalAlpha=1;o.imageSmoothingQuality='high';
+  const bi=decRes(rec.burn);if(bi.length)o.drawImage(burnCanvas(w,h,bi,spec.mat==='thermal'),0,0,out.width,out.height);
   const idxs=decRes(rec.res);
-  if(idxs.length){const m=buildResMask(w,h,rec.seed,idxs,ppu);o.globalCompositeOperation='destination-out';o.globalAlpha=.5;o.drawImage(m,0,0);o.globalCompositeOperation='source-atop';o.globalAlpha=.4;o.drawImage(m,0,0)}
+  if(idxs.length){const dm=damageCanvas(w,h,rec.seed,idxs);o.globalCompositeOperation='destination-out';o.globalAlpha=.55;o.drawImage(dm,0,0,out.width,out.height);o.globalCompositeOperation='source-atop';o.globalAlpha=1;o.drawImage(dm,0,0,out.width,out.height)}
   o.globalCompositeOperation='source-over';o.globalAlpha=1;
   if(rec.tear){
     const pc=mkCanvas(out.width,out.height),p=pc.getContext('2d');
@@ -629,7 +885,6 @@ function renderRecord(rec,ppu){
   }
   return out;
 }
-
 /* ================= sound ================= */
 const Snd={on:true,ac:null,lastScratch:0,
   init(){
@@ -660,110 +915,119 @@ const Snd={on:true,ac:null,lastScratch:0,
 };
 
 /* ================= storage ================= */
-const KEY='peel-club-v1';
-let DB=(()=>{try{const d=JSON.parse(localStorage.getItem(KEY));if(d&&d.inv&&d.pages)return d}catch(e){}return null})()||{inv:[],pages:[[]],best:null,seenTut:false};
+const KEY='peel-club-v2';
+let DB=(()=>{try{const d=JSON.parse(localStorage.getItem(KEY));if(d&&d.inv&&d.pages)return d}catch(e){}return null})()||{inv:[],pages:[[]],coins:0,jobs:0,stars:0,perfect:0,bestCombo:0,upg:{},seen:{}};
+DB.upg=DB.upg||{};DB.seen=DB.seen||{};
 function save(){try{localStorage.setItem(KEY,JSON.stringify(DB))}catch(e){console.warn('save failed',e)}}
+const upg=k=>DB.upg[k]||0;
+const RANKS=[[0,'學徒'],[12,'幫手'],[35,'撕紙師'],[75,'撕紙師傅'],[130,'撕神']];
+const rankOf=st=>RANKS.filter(r=>st>=r[0]).pop()[1];
+const UPGRADES=[
+  {k:'tweezers',n:'精密鉗',d:'拉起嚟張力再細啲，冇咁易甩',cost:[60,150],icon:'<path d="M27 4L9 22l-3 6"/><path d="M28 5L11 24l-5 4"/>'},
+  {k:'heat',n:'熱風槍',d:'焗熱快啲、範圍大啲',cost:[70,160],icon:'<circle cx="20" cy="12" r="7"/><path d="M13 12H5"/><path d="M19 19l-2 9h5l1-8"/>'},
+  {k:'scraper',n:'陶瓷刮片',d:'刮得闊啲、刮得乾淨啲',cost:[60,140],icon:'<path d="M6 20l14-14 6 6-14 14z"/><path d="M6 20l6 6"/>'},
+  {k:'spray',n:'強力除膠劑',d:'溶膠快啲、乾得慢啲',cost:[50,130],icon:'<path d="M11 13h9v15H11z"/><path d="M13 13V9h5v4"/><path d="M23 6l3-1M23 9h4"/>'},
+];
 
 /* ================= screens ================= */
-function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));if(id==='home')buildHome();if(id!=='game')Snd.peel(0,0)}
-
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));if(id==='home')buildHome();if(id==='shop')buildShop();if(id!=='game'){Snd.peel(0,0);Snd.loop('heat',0);Snd.loop('spray',0)}}
 function buildHome(){
   const deco=$('#deco');deco.querySelectorAll('canvas').forEach(c=>{c.width=c.height=0});deco.innerHTML='';const W=innerWidth,H=innerHeight;
-  const spots=[[.08,.1],[.78,.06],[.02,.72],[.8,.78],[.86,.4],[.04,.4],[.45,.88]];
-  spots.forEach(([fx,fy],i)=>{const seed=(Math.random()*1e9)|0,spec=genSticker(seed),sz=Math.min(W,H)*.2+20,ppu=sz/Math.max(spec.w,spec.h);
-    const c=renderRecord({seed,res:'',tear:null},ppu*DPR);c.style.width=spec.w*ppu+'px';c.style.left=(fx*W-10)+'px';c.style.top=(fy*H-10)+'px';c.style.transform=`rotate(${(Math.random()-.5)*40}deg)`;c.style.opacity=.9;deco.appendChild(c)});
-  const b=DB.best,pc=DB.inv.filter(r=>r.g==='perfect').length;$('#homeBest').innerHTML=`<div class="stat"><b>${b?b.perfect+'/40':'—'}</b>最佳完美</div><div class="stat"><b>${b?b.score:'—'}</b>最高分</div><div class="stat"><b>${DB.inv.length}</b>收藏</div><div class="stat"><b>${DB.inv.length?Math.round(pc/DB.inv.length*100)+'%':'—'}</b>完美率</div>`;
+  [[.04,.06],[.74,.04],[.0,.74],[.78,.78],[.84,.42],[.02,.42],[.42,.9]].forEach(([fx,fy],i)=>{const seed=(Math.random()*1e9)|0,spec=genSticker2(seed,'kawaii'),sz=Math.min(W,H)*.2+24,ppu=sz/Math.max(spec.w,spec.h);
+    const c=renderRecord({seed,pool:'kawaii',res:'',tear:null},ppu*DPR);c.style.width=spec.w*ppu+'px';c.style.left=(fx*W)+'px';c.style.top=(fy*H)+'px';c.style.transform=`rotate(${(Math.random()-.5)*36}deg)`;c.style.animationDelay=(-i*.8)+'s';deco.appendChild(c)});
+  $('#homeBest').innerHTML=`<div class="stat"><b>${rankOf(DB.stars)}</b>等級</div><div class="stat"><b>${DB.jobs}</b>做咗幾單</div><div class="stat"><b>${DB.stars}★</b>總星數</div><div class="stat"><b>${DB.coins}</b>錢</div>`;
+  $('#btnStart').textContent=DB.jobs?`繼續開工 · 第 ${DB.jobs+1} 單`:'開工';
 }
+function buildShop(){
+  $('#shopCoins').textContent=DB.coins;
+  $('#shopList').innerHTML=UPGRADES.map(u=>{const lv=upg(u.k),max=lv>=u.cost.length,c=u.cost[lv];return`<div class="shopitem"><svg viewBox="0 0 32 32">${u.icon}</svg><div class="d"><b>${u.n}</b> ${'●'.repeat(lv)}${'○'.repeat(u.cost.length-lv)}<br>${u.d}</div><button class="act" data-k="${u.k}" ${max||DB.coins<c?'disabled':''}>${max?'已滿':'<i class="coin"></i> '+c}</button></div>`}).join('');
+}
+$('#shopList').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(!b)return;const u=UPGRADES.find(x=>x.k===b.dataset.k),lv=upg(u.k),c=u.cost[lv];if(c==null||DB.coins<c)return;DB.coins-=c;DB.upg[u.k]=lv+1;save();Snd.coin();buildShop()});
 
-/* ================= game ================= */
+/* ================= game core ================= */
 const cv=$('#cv'),g=cv.getContext('2d');
 let GW=0,GH=0,bg=null,cur=null,LX=.5,lxT=.5;
-const G={deck:[],idx:0,stats:{perfect:0,residue:0,torn:0,score:0},recs:[],run:0,streak:0,bestStreak:0};
+const TOPH=118,BOTH=176;
+const G={job:null,tool:'finger',tools:[],ptr:null,modal:false,sess:null,combo:0};
+const DELICATE={laptop:1,phone:1,bottle:1,fridge:1,board:1};
 
 function layoutGame(){
   DPR=Math.min(window.devicePixelRatio||1,2);GW=innerWidth;GH=innerHeight;
   cv.width=Math.round(GW*DPR);cv.height=Math.round(GH*DPR);
   if(cur)placeCur(cur);buildBg();
 }
-function placeCur(S){
-  S.k=Math.min((GW-32)*.7/300,(GH-200)*.62/340,1.6);
-  S.cx=GW/2;S.cy=74+(GH-74-140)/2;
-}
+function stageK(){return Math.max(.35,Math.min((GW-32)*.84/300,(GH-TOPH-BOTH)*.78/320,1.6))}
+function placeCur(S){S.k=stageK();S.cx=GW/2;S.cy=TOPH+(GH-TOPH-BOTH)/2}
 function buildBg(){
   bg=mkCanvas(GW*DPR,GH*DPR);const b=bg.getContext('2d');b.scale(DPR,DPR);
-  b.fillStyle='#5b6079';b.fillRect(0,0,GW,GH);
-  b.fillStyle='rgba(255,255,255,.07)';for(let y=12;y<GH;y+=24)for(let x=12;x<GW;x+=24){b.beginPath();b.arc(x,y,1.5,0,TAU);b.fill()}
-  if(cur){const sl=b.createRadialGradient(cur.cx,cur.cy,0,cur.cx,cur.cy,Math.max(GW,GH)*.6);sl.addColorStop(0,'rgba(255,240,220,.16)');sl.addColorStop(1,'rgba(255,240,220,0)');b.fillStyle=sl;b.fillRect(0,0,GW,GH)}
-  const vg=b.createRadialGradient(GW/2,GH/2,Math.min(GW,GH)*.3,GW/2,GH/2,Math.max(GW,GH)*.8);vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(20,18,40,.35)');b.fillStyle=vg;b.fillRect(0,0,GW,GH);
-  if(cur)drawSurface(b,cur);
+  const gr=b.createLinearGradient(0,0,0,GH);gr.addColorStop(0,'#6a6f8c');gr.addColorStop(1,'#4c5069');b.fillStyle=gr;b.fillRect(0,0,GW,GH);
+  b.fillStyle='rgba(255,255,255,.07)';for(let y=12;y<GH;y+=24)for(let x=12;x<GW;x+=24){b.beginPath();b.arc(x,y,1.4,0,TAU);b.fill()}
+  const S=cur;if(!S)return;
+  const sl=b.createRadialGradient(GW/2,TOPH+(GH-TOPH-BOTH)/2,0,GW/2,GH/2,Math.max(GW,GH)*.6);sl.addColorStop(0,'rgba(255,240,220,.18)');sl.addColorStop(1,'rgba(255,240,220,0)');b.fillStyle=sl;b.fillRect(0,0,GW,GH);
+  {const t=S.spec.surface;let W=clamp(Math.max(S.w*S.k*1.6,250),0,GW-20),H=clamp(Math.max(S.h*S.k*1.6,250),0,GH-TOPH-BOTH);if(t==='bottle'||t==='phone'){H=GH-TOPH-BOTH-6;W=Math.min(GW-20,Math.max(S.w*S.k*1.35,H*.5))}drawObject(b,t,{x:S.cx-W/2,y:S.cy-H/2,w:W,h:H},S.seed)}
 }
-function drawSurface(b,S){
-  const r=mulberry32(S.seed^0x5f3759df),type=S.spec.surface,k=S.k,cx=S.cx,cy=S.cy;
-  let W=clamp(Math.max(S.w*k*1.6,240),0,GW-20),H=clamp(Math.max(S.h*k*1.6,240),0,GH-200);
+function drawObject(b,type,R,seed){
+  const r=mulberry32(seed^0x5f3759df),{x,y,w:W,h:H}=R,cx=x+W/2,cy=y+H/2;
   b.save();b.lineJoin='round';b.strokeStyle=INK;b.lineWidth=4;
-  const shadowOn=()=>{b.shadowColor='rgba(15,15,35,.4)';b.shadowBlur=30;b.shadowOffsetY=14};
-  const shadowOff=()=>{b.shadowColor='transparent';b.shadowBlur=0;b.shadowOffsetY=0};
-  shadowOn();
-  if(type==='fruit'){
-    const R=Math.min(Math.max(W,H)/2+20,(GW-20)/2,(GH-200)/2),col=pick(r,[['#ff6b4a','#c7321f'],['#ffb43a','#e07b12'],['#9be36d','#4f9e2f'],['#ffe066','#e0b512']]);
-    const gr=b.createRadialGradient(cx-R*.35,cy-R*.35,R*.1,cx,cy,R);gr.addColorStop(0,col[0]);gr.addColorStop(1,col[1]);
-    b.beginPath();b.arc(cx,cy,R,0,TAU);b.fillStyle=gr;b.fill();shadowOff();b.stroke();
-    b.fillStyle='rgba(255,255,255,.35)';b.beginPath();b.ellipse(cx-R*.45,cy-R*.45,R*.18,R*.09,-.7,0,TAU);b.fill();
-    b.restore();return;
-  }
-  if(type==='board'){W=clamp(S.w*k*1.35,200,GW-30);H=clamp(W*2.4,0,GH-190)}
-  const x=cx-W/2,y=cy-H/2,rad={box:10,laptop:28,notebook:12,fridge:22,board:Math.min(W,H)/2,pack:16}[type]||12;
+  const sOn=()=>{b.shadowColor='rgba(15,15,35,.4)';b.shadowBlur=30;b.shadowOffsetY=14},sOff=()=>{b.shadowColor='transparent';b.shadowBlur=0;b.shadowOffsetY=0};
+  sOn();
+  const rad={fruit:Math.min(W,H)*.48,box:10,laptop:28,notebook:12,fridge:22,board:Math.min(W,H)/2,pack:16,bottle:Math.min(W,H)*.32,phone:Math.min(W,H)*.16}[type]||14;
   const path=()=>{b.beginPath();rr(b,x,y,W,H,rad)};
-  const fills={box:'#c99a5e',laptop:'#c9ccd3',notebook:pick(r,['#3f7f6e','#b44d4d','#2f4f8f','#c58b2a','#6a4f9a']),fridge:'#eef0ea',board:'#d9a066',pack:'#e6f0f6'};
+  const fills={box:'#c99a5e',notebook:pick(r,['#3f7f6e','#b44d4d','#2f4f8f','#c58b2a','#6a4f9a']),fridge:'#eef0ea',board:'#d9a066',pack:'#e6f0f6',bottle:pick(r,['#bfe6ff','#ffd1e3','#d4f5d0','#ffe9b8']),phone:pick(r,['#ffd1e8','#d6f0ff','#e8e0ff','#fff1c9'])};
   path();
-  if(type==='laptop'){const gr=b.createLinearGradient(x,y,x+W,y+H);gr.addColorStop(0,'#dfe2e8');gr.addColorStop(1,'#aeb3bd');b.fillStyle=gr}else b.fillStyle=fills[type];
-  b.fill();shadowOff();
+  if(type==='laptop'){const gr=b.createLinearGradient(x,y,x+W,y+H);gr.addColorStop(0,'#e3e6ec');gr.addColorStop(1,'#a9aeb9');b.fillStyle=gr}
+  else if(type==='bottle'){const gr=b.createLinearGradient(x,0,x+W,0),c0=fills.bottle;gr.addColorStop(0,c0);gr.addColorStop(.35,'#ffffff');gr.addColorStop(.5,c0);gr.addColorStop(1,'rgba(0,0,0,.08)');b.fillStyle=c0;b.fill();b.fillStyle=gr}
+  else b.fillStyle=fills[type]||'#ddd';
+  b.fill();sOff();
   b.save();path();b.clip();
-  if(type==='box'){b.fillStyle='rgba(0,0,0,.05)';for(let i=x;i<x+W;i+=7)b.fillRect(i,y,2,H);b.fillStyle='rgba(235,215,175,.6)';b.fillRect(x,y+H*.06,W,40);b.fillStyle='rgba(255,255,255,.25)';b.fillRect(x,y+H*.06+6,W,4)}
-  if(type==='notebook'){b.fillStyle='rgba(0,0,0,.18)';b.fillRect(x,y,18,H);b.fillRect(x+W-46,y,16,H);b.globalAlpha=.08;b.fillStyle=b.createPattern(NOISE,'repeat');b.fillRect(x,y,W,H);b.globalAlpha=1}
+  if(type==='box'){b.fillStyle='rgba(0,0,0,.05)';for(let i=x;i<x+W;i+=7)b.fillRect(i,y,2,H);b.fillStyle='rgba(235,215,175,.6)';b.fillRect(x,y+H*.06,W,40)}
+  if(type==='notebook'){b.fillStyle='rgba(0,0,0,.18)';b.fillRect(x,y,18,H);b.fillRect(x+W-46,y,16,H)}
   if(type==='fridge'){b.fillStyle='#cfd3cc';b.beginPath();rr(b,x+16,y+H*.2,14,H*.6,7);b.fill();b.stroke()}
-  if(type==='board'){b.strokeStyle='rgba(120,70,20,.18)';b.lineWidth=2;for(let i=0;i<9;i++){b.beginPath();const xx=x+W*(.1+i*.1);b.moveTo(xx,y);b.bezierCurveTo(xx+12,y+H*.3,xx-12,y+H*.7,xx+4,y+H);b.stroke()}b.fillStyle='#555';for(const fy of[.17,.83])for(const fx of[.38,.62])for(const dy of[-.025,.025]){b.beginPath();b.arc(x+W*fx,y+H*(fy+dy),4,0,TAU);b.fill()}}
-  if(type==='pack'){b.fillStyle=pick(r,COLS);b.fillRect(x,y,W,H*.12);b.fillStyle='rgba(255,255,255,.6)';for(let i=0;i<4;i++){b.save();b.translate(x+W*(.2+i*.22),y+H*.5);b.rotate(.5);b.fillRect(-4,-H*.6,8+i*3,H*1.2);b.restore()}}
+  if(type==='board'){b.strokeStyle='rgba(120,70,20,.18)';b.lineWidth=2;for(let i=0;i<9;i++){b.beginPath();const xx=x+W*(.1+i*.1);b.moveTo(xx,y);b.bezierCurveTo(xx+12,y+H*.3,xx-12,y+H*.7,xx+4,y+H);b.stroke()}}
+  if(type==='pack'){b.fillStyle=pick(r,PAST);b.fillRect(x,y,W,H*.12);b.fillStyle='rgba(255,255,255,.6)';for(let i=0;i<4;i++){b.save();b.translate(x+W*(.2+i*.22),y+H*.5);b.rotate(.5);b.fillRect(-4,-H*.6,8+i*3,H*1.2);b.restore()}}
   if(type==='laptop'){b.fillStyle='rgba(255,255,255,.5)';b.beginPath();b.arc(cx,y+H*.14,10,0,TAU);b.fill()}
-  b.restore();
-  b.strokeStyle=INK;b.lineWidth=4;path();b.stroke();
-  b.restore();
+  if(type==='fruit'){const gr=b.createRadialGradient(x+W*.3,y+H*.3,10,cx,cy,Math.max(W,H)*.7);gr.addColorStop(0,'#ffb46b');gr.addColorStop(1,'#e2622f');b.fillStyle=gr;b.fillRect(x,y,W,H);b.fillStyle='rgba(255,255,255,.35)';b.beginPath();b.ellipse(x+W*.25,y+H*.22,W*.12,H*.06,-.6,0,TAU);b.fill()}
+  if(type==='bottle'){b.fillStyle='#3a2b45';b.beginPath();rr(b,x+W*.2,y-6,W*.6,H*.1,10);b.fill()}
+  if(type==='phone'){b.fillStyle='rgba(29,27,46,.85)';b.beginPath();rr(b,x+W*.08,y+W*.08,W*.36,W*.36,W*.08);b.fill();b.fillStyle='#55597a';for(const[a,c2]of[[.18,.18],[.34,.18],[.18,.34]]){b.beginPath();b.arc(x+W*a,y+W*c2,W*.06,0,TAU);b.fill()}}
+  b.globalAlpha=.06;b.fillStyle=b.createPattern(NOISE,'repeat');b.fillRect(x,y,W,H);b.globalAlpha=1;
+  b.restore();b.strokeStyle=INK;b.lineWidth=4;path();b.stroke();b.restore();
 }
-
-function setupSticker(seed){
-  const spec=genSticker(seed),w=spec.w,h=spec.h,mat=MATS[spec.mat];
-  const S={spec,seed,w,h,mat,state:'idle',appear:0,ptr:null,P0:null,P:null,fold:null,v:0,T:0,A:0,rl:0,tearAcc:0,moveAcc:0,grabT:0,resCount:0,pf:0,torn:false,fly:null};
+// a store-bought kawaii sticker sheet: header, glitter backing, a few other stickers
+/* ---------- sticker setup ---------- */
+function setupSticker(spec,opt){
+  const seed=spec.seed,w=spec.w,h=spec.h,mat=MATS[spec.mat];
+  const S={spec,seed,w,h,mat,opt,job:G.job,state:'idle',rot:0,appear:0,ptr:null,P0:null,P:null,fold:null,v:0,T:0,A:0,rl:0,tearAcc:0,moveAcc:0,grabT:0,resCount:0,pf:0,torn:false,fly:null,tries:0,onSheet:!!opt.onSheet,bubbles:[],pins:[],scratches:[],sf:0,adhNow:1,nicks:0,overT:0};
   placeCur(S);
   S.res=Math.min(2.2,Math.max(1,S.k*DPR*1.05));
   S.tex=renderArt(spec,S.res);
-  const TW=S.tex.width,TH=S.tex.height;
-  const mk=()=>{const c=mkCanvas(TW,TH);return[c,c.getContext('2d')]};
-  [S.front,S.fctx]=mk();[S.backFx,S.bctx]=mk();[S.back,S.backCtx]=mk();[S.backBase]=mk();[S.resid,S.residCtx]=mk();[S.resMask,S.rmctx]=mk();[S.tmp,S.tmpCtx]=mk();[S.ghost]=mk();
-  S.rmctx.setTransform(S.res,0,0,S.res,0,0);S.rmctx.fillStyle='#fff';
+  const TW=S.tex.width,TH=S.tex.height,mk=()=>{const c=mkCanvas(TW,TH);return[c,c.getContext('2d')]};
+  [S.front,S.fctx]=mk();[S.backFx,S.bctx]=mk();[S.back]=mk();[S.ghost]=mk();
   let x=S.ghost.getContext('2d');x.drawImage(S.tex,0,0);x.globalCompositeOperation='source-in';x.fillStyle='#000';x.fillRect(0,0,TW,TH);
-  x=S.backBase.getContext('2d');x.drawImage(S.tex,0,0);x.globalCompositeOperation='source-in';
+  x=S.back.getContext('2d');x.drawImage(S.tex,0,0);x.globalCompositeOperation='source-in';
   if(mat.holo){const gr=x.createLinearGradient(0,0,TW,TH);gr.addColorStop(0,'#e3e6ec');gr.addColorStop(.5,'#c4c8d2');gr.addColorStop(1,'#e8eaef');x.fillStyle=gr}else x.fillStyle=mat.back;
-  x.fillRect(0,0,TW,TH);x.globalCompositeOperation='source-atop';x.globalAlpha=.1;x.fillStyle=x.createPattern(NOISE,'repeat');x.fillRect(0,0,TW,TH);x.globalAlpha=1;
-  S.backCtx.drawImage(S.backBase,0,0);
-  // alpha grid
+  x.fillRect(0,0,TW,TH);x.globalCompositeOperation='source-atop';x.globalAlpha=.1;x.fillStyle=x.createPattern(NOISE,'repeat');x.fillRect(0,0,TW,TH);x.globalAlpha=.18;x.fillStyle='#e6d7a0';x.fillRect(0,0,TW,TH);x.globalAlpha=1;
   const A=120/Math.max(w,h),ac=mkCanvas(w*A,h*A),ax=ac.getContext('2d');ax.setTransform(A,0,0,A,0,0);spec.draw(ax);
   S.aw=ac.width;S.ah=ac.height;S.A_=A;const dat=ax.getImageData(0,0,S.aw,S.ah).data;S.alpha=new Uint8Array(S.aw*S.ah);for(let i=0;i<S.alpha.length;i++)S.alpha[i]=dat[i*4+3];ac.width=ac.height=0;
-  const {cs,gx,gy}=gridOf(w,h);S.cs=cs;S.gx=gx;S.gy=gy;S.cells=[];
-  let sx=0,sy=0,best=-1e9;
+  const{cs,gx,gy}=gridOf(w,h);S.cs=cs;S.gx=gx;S.gy=gy;S.cells=[];
+  const adhBase=opt.adhBase||1,adhVar=opt.adhVar||.8,glue=opt.glue||0;let sx=0,sy=0;
   for(let j=0;j<gy;j++)for(let i=0;i<gx;i++){const px=(i+.5)*cs,py=(j+.5)*cs;if(alphaAt(S,px,py)>100){
-    const n=.72*vnoise(i/4,j/4,seed)+.28*hash2(i,j,seed+7);S.cells.push({i,j,x:px,y:py,idx:j*gx+i,n,a:.75+.8*vnoise(px/70,py/70,seed+99),ever:false,res:false});sx+=px;sy+=py;
-    const sc=px/w-py/h;if(sc>best){best=sc;S.hintPt={x:px,y:py}}}}
-  S.cent={x:sx/S.cells.length,y:sy/S.cells.length};
-  S.adhNow=1;S.tries=0;S.liftMax=Math.hypot(w,h)*.06;
+    const n=.72*vnoise(i/4,j/4,seed)+.28*hash2(i,j,seed+7),a=adhBase*(1+(vnoise(px/70,py/70,seed+99)-.5)*1.6*adhVar),g0=glue*clamp(vnoise(px/38,py/38,seed+51)*1.7-.25,0,1);
+    S.cells.push({i,j,x:px,y:py,idx:j*gx+i,n,a,ever:false,res:0,glue:g0,wet:0,soak:0,heat:0,burn:0});sx+=px;sy+=py}}
+  S.cent={x:sx/S.cells.length,y:sy/S.cells.length};S.diag=Math.hypot(w,h);
+  for(const c of S.cells){c.edge=false;for(let k=0;k<8;k++){const a=k/8*TAU;if(alphaAt(S,c.x+Math.cos(a)*cs*2.2,c.y+Math.sin(a)*cs*2.2)<=100){c.edge=true;break}}}
   S.corners=[[-1,-1],[1,-1],[1,1],[-1,1]].map(([a,b])=>{let best=S.cells[0],bv=-1e9;for(const c of S.cells){const v=a*c.x+b*c.y;if(v>bv){bv=v;best=c}}return{x:best.x,y:best.y,stuck:false}});
-  {const q=mulberry32(seed^0xc0ffee),nStuck=[0,1,1,2,2,3][Math.floor(q()*6)],order=[0,1,2,3].map(i=>[q(),i]).sort((a,b)=>a[0]-b[0]).map(a=>a[1]);order.slice(0,nStuck).forEach(i=>S.corners[i].stuck=true)}
+  {const q=mulberry32(seed^0xc0ffee),order=[0,1,2,3].map(i=>[q(),i]).sort((a,b)=>a[0]-b[0]).map(a=>a[1]);order.slice(0,Math.min(3,opt.stuck||0)).forEach(i=>S.corners[i].stuck=true);
+    if(opt.preLift){const free=order.slice(Math.min(3,opt.stuck||0));const c=S.corners[free[0]];S.pre={x:c.x,y:c.y};S.P0={...S.pre};S.zone=20;computeCone(S);S.preF=foldOf(S,S.P0,{x:S.P0.x+S.u.x*16,y:S.P0.y+S.u.y*16});S.P0=null}}
+  prepResidue(S);renderResidue(S);S.dirt0=0;
+  S.hcv=mkCanvas(gx,gy);S.hctx=S.hcv.getContext('2d');S.himg=S.hctx.createImageData(gx,gy);S.bcv=mkCanvas(gx,gy);S.bctx2=S.bcv.getContext('2d');S.bimg=S.bctx2.createImageData(gx,gy);S.wcv=mkCanvas(gx,gy);S.wctx=S.wcv.getContext('2d');S.wimg=S.wctx.createImageData(gx,gy);
+  if(mat.holo){const q=mulberry32(seed^4242);S.tw=[];for(let k=0;k<400&&S.tw.length<150;k++){const px=q()*w,py=q()*h;if(alphaAt(S,px,py)>100)S.tw.push({x:px,y:py,r:1.6+q()*3.2,ph:q()*TAU,hu:q()*360})}}
   return S;
 }
 function alphaAt(S,x,y){const ix=Math.floor(x*S.A_),iy=Math.floor(y*S.A_);if(ix<0||iy<0||ix>=S.aw||iy>=S.ah)return 0;return S.alpha[iy*S.aw+ix]}
 function isEdge(S,x,y,r){let o=false,t=false;const tst=(px,py)=>{alphaAt(S,px,py)>100?o=true:t=true};tst(x,y);for(let k=0;k<16;k++){const a=k/16*TAU;tst(x+Math.cos(a)*r,y+Math.sin(a)*r);tst(x+Math.cos(a)*r*.5,y+Math.sin(a)*r*.5)}return o&&t}
 function computeCone(S){
   const P0=S.P0;let ux=S.cent.x-P0.x,uy=S.cent.y-P0.y;const ul=Math.hypot(ux,uy)||1;ux/=ul;uy/=ul;
-  const slack=S.zone+S.cs*.7,step=2.5*Math.PI/180;
+  const slack=(S.zone||20)+S.cs*.7,step=2.5*Math.PI/180;
   const minProj=a=>{const ca=Math.cos(a),sa=Math.sin(a),nx=ux*ca-uy*sa,ny=ux*sa+uy*ca;let m=1e9;for(const c of S.cells){const p=(c.x-P0.x)*nx+(c.y-P0.y)*ny;if(p<m)m=p}return m};
   let best=0,bv=minProj(0);
   if(bv<-slack){for(let k=-72;k<=72;k++){const v=minProj(k*step);if(v>bv){bv=v;best=k*step}}}
@@ -773,30 +1037,43 @@ function computeCone(S){
   const mid=(lo+hi)/2,ca=Math.cos(mid),sa=Math.sin(mid);
   S.u={x:ux*ca-uy*sa,y:ux*sa+uy*ca};S.hw=Math.max((hi-lo)/2,12*Math.PI/180);
 }
-function getFold(S){
-  if(!S.P)return null;let dx=S.P.x-S.P0.x,dy=S.P.y-S.P0.y;let L=Math.hypot(dx,dy);S.pull=L;if(L<.5)return null;
-  const ux=S.u.x,uy=S.u.y,ang=Math.atan2(ux*dy-uy*dx,ux*dx+uy*dy);S.th=Math.abs(ang)*180/Math.PI;
+function foldOf(S,P0,P){let dx=P.x-P0.x,dy=P.y-P0.y;const L=Math.hypot(dx,dy);if(L<.5)return null;const ux=S.u.x,uy=S.u.y,ang=Math.atan2(ux*dy-uy*dx,ux*dx+uy*dy);const th=Math.abs(ang)*180/Math.PI;
   if(Math.abs(ang)>S.hw){const a=Math.sign(ang)*S.hw,ca=Math.cos(a),sa=Math.sin(a);dx=(ux*ca-uy*sa)*L;dy=(ux*sa+uy*ca)*L}
-  const nx=dx/L,ny=dy/L,mx=S.P0.x+dx/2,my=S.P0.y+dy/2;return{nx,ny,mx,my,md:mx*nx+my*ny,L};
-}
+  const nx=dx/L,ny=dy/L,mx=P0.x+dx/2,my=P0.y+dy/2;return{nx,ny,mx,my,md:mx*nx+my*ny,L,th}}
+function getFold(S){if(!S.P)return null;const f=foldOf(S,S.P0,S.P);if(f)S.th=f.th;return f}
 function half(c,f,side){const px=-f.ny,py=f.nx,B=6000,bx=f.nx*f.md,by=f.ny*f.md;c.beginPath();c.moveTo(bx+px*B,by+py*B);c.lineTo(bx-px*B,by-py*B);c.lineTo(bx-px*B+side*f.nx*B,by-py*B+side*f.ny*B);c.lineTo(bx+px*B+side*f.nx*B,by+py*B+side*f.ny*B);c.closePath()}
+const soakAt=(S,p)=>{let h=0,n=0;for(const c of S.cells){if(Math.abs(c.x-p.x)<S.cs*2.2&&Math.abs(c.y-p.y)<S.cs*2.2){h+=c.soak;n++}}return n?h/n:0};
+const PAPERY={paper:1,thermal:1,kraft:1};
+const heatAt=(S,p)=>{let h=0,n=0;for(const c of S.cells){if(Math.abs(c.x-p.x)<S.cs*2.2&&Math.abs(c.y-p.y)<S.cs*2.2){h+=c.heat;n++}}return n?h/n:0};
+function isStuck(S,p){
+  if(S.onSheet)return false;let bc=null,bd=1e9;
+  for(const c of S.corners){const d=Math.hypot(c.x-p.x,c.y-p.y);if(d<bd){bd=d;bc=c}}
+  if(bd<S.diag*.18)return bc.stuck;
+  return .75+.8*vnoise(p.x/70,p.y/70,S.seed+99)>1.12;
+}
+function needRubs(S,p){if(S.pre&&Math.hypot(p.x-S.pre.x,p.y-S.pre.y)<S.cs*3.5)return 0;return 3*(isStuck(S,p)?3.4:1)*(1-.65*Math.min(1,heatAt(S,p)))*(1-.5*soakAt(S,p))}
+const softAt=(S,p)=>Math.max(Math.min(1,heatAt(S,p)),soakAt(S,p));
 
-function rebuildDamage(S){
-  const TW=S.tex.width,TH=S.tex.height;let x=S.residCtx;
-  x.globalCompositeOperation='source-over';x.clearRect(0,0,TW,TH);x.drawImage(S.resMask,0,0);
-  x.globalCompositeOperation='source-in';x.fillStyle=S.mat.resCol;x.fillRect(0,0,TW,TH);
-  x.globalCompositeOperation='source-atop';x.globalAlpha=.2;x.fillStyle=x.createPattern(NOISE,'repeat');x.fillRect(0,0,TW,TH);x.globalAlpha=1;
-  x.globalCompositeOperation='destination-in';x.drawImage(S.tex,0,0);x.globalCompositeOperation='source-over';
-  const t=S.tmpCtx;t.globalCompositeOperation='source-over';t.clearRect(0,0,TW,TH);t.drawImage(S.resMask,0,0);t.globalCompositeOperation='source-in';t.drawImage(S.tex,0,0);t.globalCompositeOperation='source-over';
-  x=S.backCtx;x.clearRect(0,0,TW,TH);x.drawImage(S.backBase,0,0);x.globalAlpha=.6;x.drawImage(S.tmp,0,0);x.globalAlpha=1;
+/* ---------- rendering helpers ---------- */
+function updateLayers(S){
+  // heat glow + burn marks at cell resolution, scaled up smoothly
+  let anyH=false;const hd=S.himg.data,bd=S.bimg.data,dark=S.spec.mat==='thermal';
+  for(const c of S.cells){const o=c.idx*4,h=Math.min(1,c.heat);if(h>.01)anyH=true;hd[o]=255;hd[o+1]=120+60*(1-h);hd[o+2]=40;hd[o+3]=h*95;
+    bd[o]=dark?30:110;bd[o+1]=dark?24:70;bd[o+2]=dark?22:40;bd[o+3]=c.burn*(dark?230:120)}
+  const wd=S.wimg.data,pap=PAPERY[S.spec.mat];for(const c of S.cells){const o=c.idx*4;wd[o]=pap?70:120;wd[o+1]=pap?62:150;wd[o+2]=pap?55:190;wd[o+3]=Math.min(1,c.soak*(pap?.9:.45)+c.wet*.35)*120}S.wctx.putImageData(S.wimg,0,0);
+  S.hctx.putImageData(S.himg,0,0);S.bctx2.putImageData(S.bimg,0,0);S.anyHeat=anyH;
 }
 function prepFront(S,now,fd){
   const f=S.fctx,TW=S.front.width,TH=S.front.height,m=S.mat;
   f.setTransform(1,0,0,1,0,0);f.globalCompositeOperation='source-over';f.globalAlpha=1;f.clearRect(0,0,TW,TH);f.drawImage(S.tex,0,0);
-  f.setTransform(S.res,0,0,S.res,0,0);
-  if(m.holo){f.globalCompositeOperation='overlay';f.globalAlpha=.55;f.fillStyle=rainbow(f,S.w,S.h,LX,now/1000);f.fillRect(0,0,S.w,S.h)}
+  f.setTransform(S.res,0,0,S.res,0,0);f.imageSmoothingQuality='high';
+  if(m.holo){f.globalCompositeOperation='overlay';f.globalAlpha=.5;f.fillStyle=rainbow(f,S.w,S.h,LX,now/1000);f.fillRect(0,0,S.w,S.h)}
   if(m.gloss>0){f.globalCompositeOperation='screen';f.globalAlpha=1;f.fillStyle=sheenGrad(f,S.w,S.h,LX,m.gloss);f.fillRect(0,0,S.w,S.h)}
-  if(fd){f.globalCompositeOperation='source-atop';f.globalAlpha=1;const gr=f.createLinearGradient(fd.mx,fd.my,fd.mx+fd.nx*26,fd.my+fd.ny*26);gr.addColorStop(0,'rgba(20,18,40,.32)');gr.addColorStop(1,'rgba(20,18,40,0)');f.fillStyle=gr;f.fillRect(0,0,S.w,S.h)}
+  f.globalCompositeOperation='source-over';f.globalAlpha=1;
+  if(S.tw){const t=now/1000;for(const p of S.tw){let a=Math.sin(p.ph+LX*10+t*1.6);if(a<=.2)continue;a=Math.pow(a,5);f.globalAlpha=a;f.fillStyle=`hsl(${p.hu},100%,88%)`;f.beginPath();poly(f,p.x,p.y,p.r*(1+a*.6),p.r*.25,4,0);f.fill()}f.globalAlpha=1}
+  f.drawImage(S.bcv,0,0,S.w,S.h);f.drawImage(S.wcv,0,0,S.w,S.h);
+  if(S.anyHeat){f.globalCompositeOperation='screen';f.drawImage(S.hcv,0,0,S.w,S.h);f.globalCompositeOperation='source-over'}
+  if(fd){f.globalCompositeOperation='source-atop';const gr=f.createLinearGradient(fd.mx,fd.my,fd.mx+fd.nx*26,fd.my+fd.ny*26);gr.addColorStop(0,'rgba(20,18,40,.32)');gr.addColorStop(1,'rgba(20,18,40,0)');f.fillStyle=gr;f.fillRect(0,0,S.w,S.h)}
   f.setTransform(1,0,0,1,0,0);f.globalCompositeOperation='destination-in';f.globalAlpha=1;f.drawImage(S.tex,0,0);f.globalCompositeOperation='source-over';
 }
 function prepBack(S,fd){
@@ -807,50 +1084,88 @@ function prepBack(S,fd){
   gr.addColorStop(0,'rgba(0,0,0,.28)');gr.addColorStop(.07,'rgba(255,255,255,.6)');gr.addColorStop(.4,'rgba(255,255,255,.12)');gr.addColorStop(1,'rgba(0,0,0,.06)');
   b.fillStyle=gr;b.fillRect(0,0,S.w,S.h);b.globalCompositeOperation='source-over';b.setTransform(1,0,0,1,0,0);
 }
+function toLocal(S,ex,ey){const r=cv.getBoundingClientRect(),x=ex-r.left-S.cx,y=ey-r.top-S.cy,c=Math.cos(-S.rot),s=Math.sin(-S.rot);return{x:(x*c-y*s)/S.k+S.w/2,y:(x*s+y*c)/S.k+S.h/2}}
+function toScreen(S,p){const x=(p.x-S.w/2)*S.k,y=(p.y-S.h/2)*S.k,c=Math.cos(S.rot),s=Math.sin(S.rot);return{x:S.cx+x*c-y*s,y:S.cy+x*s+y*c}}
 
-function update(S,dt){
-  if(S.state!=='peeling'){Snd.peel(0,0);return}
+/* ---------- lifting & peeling ---------- */
+const cellAdh=c=>c.a*(1-.55*Math.min(1,c.heat))*(1-.5*c.soak);
+function startPeel(S,P0,pid,grip,downP){
+  S.state='peeling';S.preF=null;S.P0={...P0};S.zone=Math.max(14,34/S.k);computeCone(S);
+  S.P={x:P0.x+S.u.x*12,y:P0.y+S.u.y*12};S.base={...S.P};S.down=downP||{...P0};S.ptr=pid;S.grip=grip;S.grabT=0;S.v=0;S.moveAcc=0;
+  S.stuck=isStuck(S,P0);let a=0,n=0;for(const c of S.cells)if(Math.hypot(c.x-P0.x,c.y-P0.y)<S.cs*2.5){a+=cellAdh(c);n++}S.adhNow=n?a/n:1;S.soakNow=soakAt(S,P0);
+  Snd.pop();tipOnce('peel','<b>慢慢拉</b>：張力表入黃色會留低紙屑，入紅色會撕爛。鬆手之後撳返<b>揭起嗰塊</b>可以繼續。');
+}
+function layBack(S){S.state='idle';S.P=null;S.P0=null;S.fold=null;S.tearAcc=0;S.sf=0;S.tries++;S.ptr=null;Snd.pop()}
+function onFlap(S,p){const f=S.fold;if(!f)return false;if(Math.hypot(p.x-S.P.x,p.y-S.P.y)<50/S.k)return true;const d=p.x*f.nx+p.y*f.ny-f.md;if(Math.abs(d)<36/S.k)return true;if(d<0)return false;return alphaAt(S,p.x-2*d*f.nx,p.y-2*d*f.ny)>100}
+function nick(S,p){for(const c of S.cells)if(Math.hypot(c.x-p.x,c.y-p.y)<S.cs*1.7&&c.res<.8){c.res=.85;c.nick=true}S.nicks++;flashWarn('刮花咗個角！呢度黐得好實');Snd.scratch()}
+function updatePeel(S,dt){
   S.grabT+=dt;
-  // speed measured in screen px so phones and desktops feel the same
   const inst=S.ptr!=null?S.moveAcc*S.k/Math.max(dt,1/240)/2/SPEED_NORM:0;S.moveAcc=0;
   S.v+=(inst-S.v)*(1-Math.exp(-dt/.06));
   const f=getFold(S);S.fold=f;
-  // stronger glue under the peel front means you have to slow down there;
-  // a glued-down start spot multiplies tension until the front gets clear of it
-  const sf=S.stuck?(f?clamp(1-(f.L/2)/(Math.hypot(S.w,S.h)*.32),0,1):1):0;S.sf=sf;
-  const m=S.mat,T=S.v/m.maxV*S.adhNow*(1+2.2*sf);S.T=T;
+  const sf=S.stuck?(f?clamp(1-(f.L/2)/(S.diag*.32),0,1):1)*(1-.75*softAt(S,S.P0)):0;S.sf=sf;
+  const wetPaper=PAPERY[S.spec.mat]?S.soakNow||0:0;
+  const m=S.mat,tw=S.grip==='tweezers'?.8-.1*upg('tweezers'):1,base=S.onSheet?.55:1;
+  const T=S.v/m.maxV*S.adhNow*base*(1+2.2*sf)*tw;S.T=T;
   if(sf>.3&&S.ptr!=null&&T>.7)Snd.scratch();
   const A=f&&f.L>12?clamp((S.th-m.tol)/35,0,1):0;S.A=A;
   const grace=S.grabT<.12||S.ptr==null;
-  const rl=grace?0:clamp(clamp((T-.5)/.4,0,1)*m.res+A*.8*m.res,0,1);S.rl=rl;
-  if(!grace){if(T>1)S.tearAcc+=(T-1)*dt*m.tear*8;else S.tearAcc=Math.max(0,S.tearAcc-dt*.8)}
+  const rl=grace?0:clamp(clamp((T-.5)/.4,0,1)*m.res+A*.8*m.res+(T>.3?wetPaper*.45:0),0,1);S.rl=rl;
+  if(!grace){const tl=1-wetPaper*.35;if(T>tl)S.tearAcc+=(T-tl)*dt*m.tear*8*(1+wetPaper);else S.tearAcc=Math.max(0,S.tearAcc-dt*.8)}
   Snd.peel(S.ptr!=null?S.v/m.maxV:0,T);
+  if(S.tearAcc>(S.grip==='tweezers'?.15*(1+.5*upg('tweezers')):.15)&&S.pf>.03){
+    if(S.grip==='tweezers'){S.ptr=null;S.tearAcc=0;S.v=0;flashWarn('鉗甩咗！拉得太大力');Snd.pop();try{navigator.vibrate&&navigator.vibrate(20)}catch(e){}}
+    else{doTear(S);return}
+  }
   if(!f)return;
-  let peeled=0,dirty=false,na=0,sa=0;
-  for(const c of S.cells){if(c.x*f.nx+c.y*f.ny<f.md){peeled++;if(!c.ever){c.ever=true;na++;sa+=c.a;if(c.n<rl*.9){c.res=true;S.resCount++;drawResBlob(S.rmctx,c.x,c.y,S.cs,c.i,c.j,S.seed);dirty=true}}}}
-  if(na)S.adhNow+=(sa/na-S.adhNow)*.35;
+  let peeled=0,dirty=false,na=0,sa=0,ss=0;
+  for(const c of S.cells){if(c.x*f.nx+c.y*f.ny<f.md){peeled++;if(!c.ever){c.ever=true;na++;sa+=cellAdh(c);ss+=c.soak;
+    if(c.n<rl*.9){c.res=Math.max(c.res,.6+.4*hash2(c.i,c.j,S.seed+3));dirty=true}
+    if(c.burn>.3&&!S.onSheet){c.glue=Math.min(1,c.glue+.5*c.burn);dirty=true}
+    if(c.res>0)S.resCount++;if(c.glue>.05)dirty=true}}}
+  if(na){S.adhNow+=(sa/na-S.adhNow)*.35;S.soakNow+=(ss/na-(S.soakNow||0))*.35}
   S.pf=peeled/S.cells.length;
-  if(dirty){rebuildDamage(S);Snd.scratch()}
-  if(S.tearAcc>.15&&S.pf>.03){doTear(S);return}
-  if(S.pf>=.96)finishClean(S);
+  if(dirty){S.residDirty=true;if(rl>0)Snd.scratch()}
+  if(S.pf>=.96)finishPeel(S);
 }
-const adhAt=(S,x,y)=>.75+.8*vnoise(x/70,y/70,S.seed+99);
-// corners near a stuck corner won't lift; along the edges it depends on the glue there
-function isStuck(S,p){
-  const diag=Math.hypot(S.w,S.h);let bc=null,bd=1e9;
-  for(const c of S.corners){const d=Math.hypot(c.x-p.x,c.y-p.y);if(d<bd){bd=d;bc=c}}
-  if(bd<diag*.18)return bc.stuck;
-  return adhAt(S,p.x,p.y)>1.12;
+function updateSoak(S,dt){
+  // remover sprayed on the sticker creeps in from the cut edge and weakens the glue
+  let any=false;const rate=.28*(1+.5*upg('spray'));
+  for(const c of S.cells){if(c.wet>0){c.soak=Math.min(1,c.soak+dt*c.wet*rate*(c.edge?1:.18));c.wet=Math.max(0,c.wet-dt*.07);any=true}}
+  if(any)updateLayers(S);
+}
+function wedgeMove(S,p,dtMs){
+  // scraper pushed under the edge: lifts it fast, but forcing a glued spot nicks the sticker
+  const W=S.wedge,d={x:p.x-W.lp.x,y:p.y-W.lp.y},push=d.x*W.u.x+d.y*W.u.y,v=Math.hypot(d.x,d.y)*S.k/Math.max(dtMs,1)*1000;W.lp={...p};
+  if(push<=0)return;W.push+=push*S.k;
+  const hard=W.stuck&&softAt(S,W.start)<.45;
+  if((hard&&Math.random()<.035*push*S.k)||(v>750&&Math.random()<.4)){nick(S,{x:W.start.x+W.u.x*S.cs,y:W.start.y+W.u.y*S.cs})}
+  if(v>900&&DELICATE[S.spec.surface]&&S.scratches.length<24&&Math.random()<.5){S.scratches.push({a:{...W.start},b:{x:W.start.x-W.u.x*18,y:W.start.y-W.u.y*18}});flashWarn('推得太快，刮花咗個表面！')}
+  Snd.squeak();
+  if(W.push>(hard?95:34)){S.wedge=null;startPeel(S,W.start,null,'finger',p);S.ptr=null;toast('撬起咗！','perfect');tipOnce('wedged','角已經翹起：用<b>手指</b>或者<b>鉗</b>撳住翹起嗰度拉。')}
+}
+function tapeDab(S,p){
+  const R=40/S.k;let got=0;
+  for(const c of S.cells){const d=Math.hypot(c.x-p.x,c.y-p.y);if(d>R)continue;const k2=1-d/R*.5,r0=c.res;c.res=Math.max(0,c.res-.42*k2*(1+.3*upg('scraper')));c.glue=Math.max(0,c.glue-.03*k2);got+=r0-c.res}
+  S.residDirty=true;Snd.tone(260,.08,.18);Snd.burst(.05,900,.2,'lowpass');
+  const sp=toScreen(S,p);PARTS.push({k:'tape',x:sp.x,y:sp.y,life:0,max:.45,r:R*S.k});
+  if(got<.05)flashWarn('呢度冇紙屑；殘膠要用除膠劑同刮片');
+}
+function updateHeat(S,dt){
+  let any=false;
+  if(S.heatP){const R=52/S.k*(1+.15*upg('heat')),rate=1.2*(1+.5*upg('heat'));for(const c of S.cells){const d=Math.hypot(c.x-S.heatP.x,c.y-S.heatP.y);if(d<R){c.heat=Math.min(1.6,c.heat+dt*rate*(1-d/R));any=true}}}
+  let over=false;for(const c of S.cells){if(c.heat>0){any=true;c.heat=Math.max(0,c.heat-dt*.16);if(c.heat>1.15){c.burn=Math.min(1,c.burn+dt*.7);over=true}}}
+  if(over){S.overT+=dt;if(S.overT>.4){S.overT=-1.2;flashWarn(S.spec.mat==='thermal'?'太熱喇！熱感紙會燶黑！':'太熱喇！膠會溶到黐立立')}}
+  if(any||S.anyHeat)updateLayers(S);
 }
 function makeRec(S,grade,extra){
-  return{id:uid(),seed:S.seed,w:S.w,h:S.h,mat:S.spec.mat,kind:S.spec.kind,name:S.spec.name,g:grade,rf:+(S.resCount/S.cells.length).toFixed(4),pf:+(extra.pf||1).toFixed(3),res:encRes(S.cells,S.gx*S.gy),tear:extra.tear||null,t:Date.now()};
+  return{id:uid(),pool:S.spec.pool,seed:S.seed,w:S.w,h:S.h,mat:S.spec.mat,kind:S.spec.kind,name:S.spec.name,g:grade,rf:+(S.resCount/S.cells.length).toFixed(4),pf:+(extra.pf||1).toFixed(3),
+    res:encBits(S.cells,S.gx*S.gy,c=>c.res>.3),burn:encBits(S.cells,S.gx*S.gy,c=>c.burn>.35),tear:extra.tear||null,t:Date.now()};
 }
-function scoreOf(rec){return rec.g==='perfect'?100:rec.g==='residue'?Math.max(20,Math.round(95-rec.rf*400)):Math.round(5+rec.pf*25)}
-function finishClean(S){
-  const rf=S.resCount/S.cells.length,grade=(S.resCount===0||rf<.004)?'perfect':'residue';
-  const rec=makeRec(S,grade,{});
-  grade==='perfect'?Snd.chime():Snd.soft();
-  commit(S,rec);
+function stickerGrade(S){const rf=S.resCount/S.cells.length;return(S.resCount===0||rf<.004)?'perfect':'residue'}
+function finishPeel(S){
+  S.ptr=null;S.fold=null;Snd.peel(0,0);
+  const rec=makeRec(S,stickerGrade(S),{});rec.g==='perfect'?Snd.chime():Snd.soft();commit(S,rec);
 }
 function doTear(S){
   const f=S.fold,nx=+f.nx.toFixed(4),ny=+f.ny.toFixed(4),tear={nx,ny,c:+(f.mx*nx+f.my*ny).toFixed(2),s:(Math.random()*1e6)|0};
@@ -860,54 +1175,126 @@ function doTear(S){
   x.setTransform(S.res,0,0,S.res,0,0);x.beginPath();jagPath(x,tear,S.w,S.h,1);x.clip();
   x.setTransform(1,0,0,1,0,0);x.drawImage(S.tex,0,0);
   x.setTransform(S.res,0,0,S.res,0,0);x.globalCompositeOperation='source-atop';x.lineJoin='round';x.strokeStyle='rgba(255,255,255,.55)';x.lineWidth=8;x.beginPath();jagLine(x,tear,S.w,S.h);x.stroke();x.strokeStyle='rgba(255,255,255,.95)';x.lineWidth=3.2;x.stroke();
-  S.remain=rm;
+  S.remain=rm;S.ptr=null;S.fold=null;
   Snd.rip();try{navigator.vibrate&&navigator.vibrate([40,30,60])}catch(e){}
   commit(S,makeRec(S,'torn',{pf,tear}));
 }
 function commit(S,rec){
-  S.state='fly';S.ptr=null;S.fold=null;Snd.peel(0,0);
+  S.state='fly';
   const img=renderRecord(rec,S.res),cr=cv.getBoundingClientRect(),br=$('#hBook').getBoundingClientRect();
   S.fly={t:0,img,x0:S.cx,y0:S.cy,tx:br.left+br.width/2-cr.left,ty:br.top+br.height/2-cr.top,rot:(Math.random()<.5?-1:1)*(.4+Math.random()*.5),rec};
-  G.recs.push(rec);DB.inv.push(rec);save();
-  G.stats[rec.g]++;let sc=scoreOf(rec),bonus=0;
-  if(rec.g==='perfect'){G.streak++;G.bestStreak=Math.max(G.bestStreak,G.streak);bonus=Math.min(50,(G.streak-1)*10);burst(S)}else G.streak=0;
-  sc+=bonus;G.stats.score+=sc;
-  const msg=rec.g==='perfect'?(G.streak>1?`連續完美 ×${G.streak}！<small>+${sc} 分（連擊 +${bonus}）</small>`:`完美！✦<small>+${sc} 分</small>`):rec.g==='residue'?`留低白底 ${Math.max(1,Math.round(rec.rf*100))}%<small>+${sc} 分</small>`:`撕爛咗！<small>淨係攞到 ${Math.round(rec.pf*100)}% · +${sc} 分</small>`;
-  toast(msg,rec.g);hud(true);
+  S.rec=rec;DB.inv.push(rec);save();
+  if(rec.g==='perfect')burst(S.cx,S.cy,S.w*S.k,S.h*S.k);
+  toast(rec.g==='perfect'?'原張完美！✦':rec.g==='residue'?`有紙屑留低 ${Math.max(1,Math.round(rec.rf*100))}%`:`撕爛咗！<small>淨係攞到 ${Math.round(rec.pf*100)}%</small>`,rec.g);
+  // whatever stayed on the surface is now fully exposed
+  for(const c of S.cells){if(!c.ever&&!S.torn){c.ever=true}}
+  if(S.torn){for(const c of S.cells)if(c.x*S.tear.nx+c.y*S.tear.ny>=S.tear.c)c.leftover=true}
+  S.residDirty=true;
 }
 function drawFly(S,dt){
   const F=S.fly;F.t=Math.min(1,F.t+dt/.9);const t=F.t;let x,y,s,rot;
   if(t<.22){const p=t/.22;x=F.x0;y=F.y0-p*10;s=1+.07*p;rot=0}
   else{const p=easeInOut((t-.22)/.78);x=lerp(F.x0,F.tx,p);y=lerp(F.y0-10,F.ty,p)-Math.sin(p*Math.PI)*70;s=lerp(1.07,.1,p);rot=F.rot*p}
-  g.save();g.translate(x,y);g.rotate(rot);g.scale(S.k*s,S.k*s);
-  g.shadowColor='rgba(20,18,40,.35)';g.shadowBlur=18*DPR;g.shadowOffsetY=10*DPR;
-  g.drawImage(F.img,-S.w/2,-S.h/2,S.w,S.h);g.restore();
-  if(t>=1){F.img.width=F.img.height=0;S.fly=null;const bk=$('#hBook');bk.classList.remove('bump');void bk.offsetWidth;bk.classList.add('bump');Snd.pop();
-    const run=G.run;setTimeout(()=>{if(run!==G.run||!$('#game').classList.contains('on'))return;G.idx++;nextSticker()},650)}
+  g.save();g.translate(x,y);g.rotate(rot);g.scale(S.k*s,S.k*s);g.shadowColor='rgba(20,18,40,.35)';g.shadowBlur=18*DPR;g.shadowOffsetY=10*DPR;g.drawImage(F.img,-S.w/2,-S.h/2,S.w,S.h);g.restore();
+  if(t>=1){F.img.width=F.img.height=0;S.fly=null;const bk=$('#hBook');bk.classList.remove('bump');void bk.offsetWidth;bk.classList.add('bump');Snd.pop();setTimeout(()=>{if(cur===S)enterClean(S)},350)}
 }
+
+/* ---------- cleaning ---------- */
+function dirtOf(S){let d=0;for(const c of S.cells){if(S.torn&&c.leftover)continue;d+=Math.min(1,c.res+c.glue*.85)}return d/S.cells.length}
+function enterClean(S){
+  if(S.torn){finishJob(S);return}
+  S.dirt0=dirtOf(S);
+  if(S.dirt0<.006){toast('表面乾淨，唔使清！','perfect');setTimeout(()=>finishJob(S),700);return}
+  S.state='clean';setTools(['scraper','spray','tape','heat'],'scraper');
+  setAct('交貨',()=>finishJob(S));
+  tipOnce('clean','用<b>刮片</b>刮走紙屑。啡黃色嘅<b>殘膠</b>要先噴<b>除膠劑</b>（或者用風筒焗熱）先刮得走。刮得太快會刮花表面！');
+}
+function scrapeSeg(S,a,b,dtMs){
+  const R=34/S.k*(1+.25*upg('scraper')),eff=1+.35*upg('scraper'),dx=b.x-a.x,dy=b.y-a.y,L=Math.hypot(dx,dy);if(L<.01)return;
+  const vcss=L*S.k/Math.max(dtMs,1)*1000;let removed=0,dry=false;
+  for(const c of S.cells){const t=clamp(((c.x-a.x)*dx+(c.y-a.y)*dy)/(L*L),0,1),px=a.x+dx*t,py=a.y+dy*t;if(Math.hypot(c.x-px,c.y-py)>R)continue;
+    const amt=clamp(L/(R*2),0,1)*.6*eff; // one full blade-width pass ≈ 0.6
+    if(c.res>0){const r0=c.res;c.res=Math.max(0,c.res-amt*1.1);removed+=r0-c.res}
+    if(c.glue>0){const ge=c.wet>.2?.9*c.wet:c.heat>.5?.45:.012;const g0=c.glue;c.glue=Math.max(0,c.glue-amt*ge);removed+=g0-c.glue;if(ge<.05&&c.glue>.2)dry=true}}
+  if(removed>0){S.residDirty=true;Snd.squeak();if(Math.random()<.5){const sp=toScreen(S,b);PARTS.push({k:'flake',x:sp.x,y:sp.y,vx:(Math.random()-.5)*120,vy:-60-Math.random()*80,life:0,max:.6,r:2+Math.random()*3,rot:Math.random()*TAU,c:'#f4f0e6'})}}
+  if(dry&&!S.dryWarn){S.dryWarn=true;flashWarn('殘膠太黐，刮唔走：噴除膠劑或者焗熱先')}
+  if(vcss>1500&&DELICATE[S.spec.surface]&&S.scratches.length<24){S.scratches.push({a:{...a},b:{...b}});flashWarn('太大力！刮花咗個表面');Snd.scratch();try{navigator.vibrate&&navigator.vibrate(15)}catch(e){}}
+}
+function updateClean(S,dt){
+  let wet=false;for(const c of S.cells){if(c.wet>0){c.wet=Math.max(0,c.wet-dt*.09/(1+.4*upg('spray')));wet=true}}
+  if(wet)S.residDirty=true;
+  S.dirt=dirtOf(S);
+  if(S.dirt<.004&&!S.done){S.done=true;toast('乾淨晒！','perfect');Snd.chime();setTimeout(()=>finishJob(S),600)}
+}
+function sprayAt(S,dt){const R=58/S.k,rate=2.4*(1+.5*upg('spray'));for(const c of S.cells){const d=Math.hypot(c.x-S.sprayP.x,c.y-S.sprayP.y);if(d<R)c.wet=Math.min(1,c.wet+dt*rate*(1-d/R*.6))}S.residDirty=true;
+  const sp=toScreen(S,S.sprayP);for(let i=0;i<2;i++)PARTS.push({k:'mist',x:sp.x+(Math.random()-.5)*50,y:sp.y+(Math.random()-.5)*50,vx:(Math.random()-.5)*30,vy:-20,life:0,max:.5,r:2+Math.random()*4,c:'rgba(200,225,255,.8)'})}
+
+/* ---------- particles ---------- */
 const PARTS=[];
-function burst(S){const cols=['#ffcf33','#fff','#ff8fb3','#46c8ff'];for(let i=0;i<26;i++){const a=Math.random()*TAU,v=160+Math.random()*320;PARTS.push({x:S.cx+(Math.random()-.5)*S.w*S.k*.5,y:S.cy+(Math.random()-.5)*S.h*S.k*.5,vx:Math.cos(a)*v,vy:Math.sin(a)*v-120,life:0,max:.7+Math.random()*.4,r:5+Math.random()*7,rot:Math.random()*TAU,c:cols[i%cols.length]})}}
-function drawParts(dt){for(let i=PARTS.length-1;i>=0;i--){const p=PARTS[i];p.life+=dt;if(p.life>p.max){PARTS.splice(i,1);continue}p.vy+=600*dt;p.vx*=.98;p.x+=p.vx*dt;p.y+=p.vy*dt;p.rot+=dt*4;g.save();g.globalAlpha=1-p.life/p.max;g.translate(p.x,p.y);g.rotate(p.rot);g.fillStyle=p.c;g.strokeStyle=INK;g.lineWidth=2;g.lineJoin='round';g.beginPath();poly(g,0,0,p.r,p.r*.45,4,0);g.fill();g.stroke();g.restore()}}
+function burst(cx,cy,w,h){const cols=['#ffcf33','#fff','#ff8fb3','#46c8ff'];for(let i=0;i<26;i++){const a=Math.random()*TAU,v=160+Math.random()*320;PARTS.push({k:'star',x:cx+(Math.random()-.5)*w*.5,y:cy+(Math.random()-.5)*h*.5,vx:Math.cos(a)*v,vy:Math.sin(a)*v-120,life:0,max:.7+Math.random()*.4,r:5+Math.random()*7,rot:Math.random()*TAU,c:cols[i%cols.length]})}}
+function drawParts(dt){for(let i=PARTS.length-1;i>=0;i--){const p=PARTS[i];p.life+=dt;if(p.life>p.max){PARTS.splice(i,1);continue}const a=1-p.life/p.max;
+  if(p.k==='tape'){g.save();g.globalAlpha=a*.85;g.translate(p.x,p.y-p.life*30);g.rotate(-.2);g.fillStyle='rgba(255,246,200,.75)';g.strokeStyle='rgba(120,100,60,.5)';g.lineWidth=1;g.beginPath();rr(g,-p.r,-p.r*.45,p.r*2,p.r*.9,3);g.fill();g.stroke();g.restore();continue}
+  if(p.k==='pop'){g.save();g.globalAlpha=a;g.strokeStyle='#fff';g.lineWidth=2;g.beginPath();g.arc(p.x,p.y,p.r*(1+p.life*4),0,TAU);g.stroke();g.restore();continue}
+  p.vy+=(p.k==='mist'?-20:600)*dt;p.vx*=.98;p.x+=p.vx*dt;p.y+=p.vy*dt;p.rot=(p.rot||0)+dt*4;
+  g.save();g.globalAlpha=a;g.translate(p.x,p.y);g.rotate(p.rot);g.fillStyle=p.c;
+  if(p.k==='star'){g.strokeStyle=INK;g.lineWidth=2;g.lineJoin='round';g.beginPath();poly(g,0,0,p.r,p.r*.45,4,0);g.fill();g.stroke()}
+  else if(p.k==='flake'){g.beginPath();g.moveTo(-p.r,-p.r*.4);g.lineTo(p.r,-p.r*.6);g.lineTo(p.r*.6,p.r*.5);g.lineTo(-p.r*.8,p.r*.3);g.closePath();g.fill()}
+  else{g.beginPath();g.arc(0,0,p.r,0,TAU);g.fill()}
+  g.restore()}}
+
+/* ---------- tool cursors ---------- */
+let TP=null;
+function setTP(e){const r=cv.getBoundingClientRect();TP={x:e.clientX-r.left,y:e.clientY-r.top}}
+function drawTool(now){
+  if(!TP||!cur)return;const S=cur,t=G.tool,{x,y}=TP,down=G.ptr!=null;
+  g.save();g.lineJoin='round';g.lineCap='round';
+  if(t==='tweezers'&&(down||!matchMedia('(pointer:coarse)').matches)){const grip=S.ptr!=null&&S.grip==='tweezers',o=grip?0:5;
+    for(const s of[-1,1]){g.beginPath();g.moveTo(x+s*o*.4,y);g.lineTo(x+70+s*o,y-96+s*o*.6);g.lineWidth=7;g.strokeStyle=INK;g.stroke();g.lineWidth=4;g.strokeStyle='#cfd5df';g.stroke()}
+    g.beginPath();g.arc(x,y,3,0,TAU);g.fillStyle=INK;g.fill()}
+  else if(t==='heat'&&down){const R=52*(1+.15*upg('heat'));const gr=g.createRadialGradient(x,y,0,x,y,R);gr.addColorStop(0,'rgba(255,140,60,.28)');gr.addColorStop(1,'rgba(255,140,60,0)');g.fillStyle=gr;g.beginPath();g.arc(x,y,R,0,TAU);g.fill();
+    for(let k=0;k<3;k++){g.beginPath();const ph=now/90+k*2;for(let i=0;i<=10;i++){const yy=y-40-i*5,xx=x+30+k*10+Math.sin(ph+i*.8)*4;i?g.lineTo(xx,yy):g.moveTo(xx,yy)}g.strokeStyle='rgba(255,150,70,.55)';g.lineWidth=2;g.stroke()}
+    g.save();g.translate(x+44,y-72);g.rotate(-.7);g.fillStyle='#ff9ec7';g.strokeStyle=INK;g.lineWidth=3;g.beginPath();rr(g,-12,-26,24,40,6);g.fill();g.stroke();g.beginPath();g.arc(0,-34,20,0,TAU);g.fill();g.stroke();g.beginPath();rr(g,-8,14,16,30,6);g.fill();g.stroke();g.restore()}
+  else if(t==='scraper'&&(down||!matchMedia('(pointer:coarse)').matches)){const R=(S.state==='squeegee'?40:34)*(1+.25*upg('scraper'));const a=G.mvAng||0;g.translate(x,y);g.rotate(a);g.beginPath();rr(g,-R*.35-28,-R,28,R*2,6);g.fillStyle='rgba(120,220,210,.55)';g.fill();g.lineWidth=2.5;g.strokeStyle=INK;g.stroke();g.beginPath();g.moveTo(-R*.35,-R);g.lineTo(-R*.35,R);g.strokeStyle='rgba(255,255,255,.8)';g.lineWidth=2;g.stroke()}
+  else if(t==='spray'&&down){g.save();g.translate(x+40,y-58);g.fillStyle='#fff7e8';g.strokeStyle=INK;g.lineWidth=3;g.beginPath();rr(g,-12,-6,26,44,6);g.fill();g.stroke();g.fillStyle='#9fd8ff';g.beginPath();rr(g,-8,-18,16,12,3);g.fill();g.stroke();g.restore()}
+  else if(t==='pin'){g.beginPath();g.moveTo(x,y);g.lineTo(x+18,y-18);g.strokeStyle='#9aa3b2';g.lineWidth=2;g.stroke();g.beginPath();g.arc(x+22,y-22,7,0,TAU);g.fillStyle='#ff5a4e';g.fill();g.strokeStyle=INK;g.stroke()}
+  else if(down){g.beginPath();g.arc(x,y,24,0,TAU);g.strokeStyle='rgba(29,27,46,.45)';g.lineWidth=6;g.stroke();g.strokeStyle='rgba(255,255,255,.9)';g.lineWidth=2.5;g.stroke()}
+  g.restore();
+}
+
+/* ---------- main draw ---------- */
 function drawCur(dt,now){
   const S=cur;if(S.appear<1)S.appear=Math.min(1,S.appear+dt/.38);
-  update(S,dt);
-  const ap=S.appear,sc=S.k*(1+.25*(1-easeOutBack(ap))),w=S.w,h=S.h;
-  g.save();g.translate(S.cx,S.cy);g.scale(sc,sc);g.translate(-w/2,-h/2);
+  stepState(S,dt);
+  const ap=S.appear,sc=S.k*(1+.25*(1-easeOutBack(ap))),w=S.w,h=S.h,st=S.state;
+  g.save();g.translate(S.cx,S.cy);g.rotate(S.rot);g.scale(sc,sc);g.translate(-w/2,-h/2);
   const small=()=>{g.shadowColor='rgba(20,18,40,.22)';g.shadowBlur=2*DPR;g.shadowOffsetY=1*DPR};
-  if(S.state==='idle'||(S.state==='peeling'&&!S.fold)){
-    prepFront(S,now);g.save();g.globalAlpha=Math.min(1,ap*2.5);small();g.drawImage(S.front,0,0,w,h);g.restore();
-  }else if(S.state==='peeling'){
-    const f=S.fold;prepFront(S,now,f);prepBack(S,f);
-    g.save();half(g,f,-1);g.clip();g.globalAlpha=.05;g.drawImage(S.ghost,0,0,w,h);g.globalAlpha=1;g.drawImage(S.resid,0,0,w,h);g.restore();
-    g.save();half(g,f,1);g.clip();small();g.drawImage(S.front,0,0,w,h);g.restore();
-    g.save();const nx=f.nx,ny=f.ny;g.transform(1-2*nx*nx,-2*nx*ny,-2*nx*ny,1-2*ny*ny,2*f.md*nx,2*f.md*ny);half(g,f,-1);g.clip();
-    g.shadowColor='rgba(20,18,40,.38)';g.shadowBlur=16*DPR;g.shadowOffsetX=3*DPR;g.shadowOffsetY=7*DPR;g.drawImage(S.backFx,0,0,w,h);g.restore();
-  }else{
-    g.save();if(S.torn){g.beginPath();jagPath(g,S.tear,w,h,-1);g.clip()}g.globalAlpha=.05;g.drawImage(S.ghost,0,0,w,h);g.globalAlpha=1;g.drawImage(S.resid,0,0,w,h);g.restore();
-    if(S.torn){g.save();small();g.drawImage(S.remain,0,0,w,h);g.restore()}
+  if(st==='idle'||st==='peeling'){
+    const f=st==='peeling'?S.fold:S.preF;prepFront(S,now,f);
+    if(!f){g.save();g.globalAlpha=Math.min(1,ap*2.5);small();g.drawImage(S.front,0,0,w,h);g.restore()}
+    else{prepBack(S,f);
+      g.save();half(g,f,-1);g.clip();g.globalAlpha=.05;g.drawImage(S.ghost,0,0,w,h);g.globalAlpha=1;g.imageSmoothingQuality='high';g.drawImage(S.rcv,0,0,w,h);g.restore();
+      g.save();half(g,f,1);g.clip();small();g.drawImage(S.front,0,0,w,h);g.restore();
+      g.save();const nx=f.nx,ny=f.ny;g.transform(1-2*nx*nx,-2*nx*ny,-2*nx*ny,1-2*ny*ny,2*f.md*nx,2*f.md*ny);half(g,f,-1);g.clip();
+      g.shadowColor='rgba(20,18,40,.38)';g.shadowBlur=16*DPR;g.shadowOffsetX=3*DPR;g.shadowOffsetY=7*DPR;g.drawImage(S.backFx,0,0,w,h);g.restore()}
+    if(S.rub){const R=S.rub,pr=Math.min(1,R.prog);g.save();g.lineCap='round';g.beginPath();g.arc(R.x,R.y,22/S.k,0,TAU);g.strokeStyle='rgba(29,27,46,.35)';g.lineWidth=7/S.k;g.stroke();g.beginPath();g.arc(R.x,R.y,22/S.k,-Math.PI/2,-Math.PI/2+pr*TAU);g.strokeStyle=R.stuck?'#ff5a4e':'#ffcf33';g.lineWidth=5/S.k;g.stroke();g.restore()}
+  }else if(st==='fly'||st==='clean'||st==='result'){
+    g.save();if(S.torn){g.beginPath();jagPath(g,S.tear,w,h,-1);g.clip()}g.globalAlpha=.05;g.drawImage(S.ghost,0,0,w,h);g.globalAlpha=1;g.imageSmoothingQuality='high';g.drawImage(S.rcv,0,0,w,h);g.restore();
+    if(S.scratches.length){g.save();g.lineCap='round';for(const s of S.scratches){g.beginPath();g.moveTo(s.a.x,s.a.y);g.lineTo(s.b.x,s.b.y);g.strokeStyle='rgba(255,255,255,.55)';g.lineWidth=1.4/S.k;g.stroke();g.strokeStyle='rgba(20,18,40,.18)';g.lineWidth=.8/S.k;g.translate(.6/S.k,.8/S.k);g.stroke();g.translate(-.6/S.k,-.8/S.k)}g.restore()}
+    if(S.torn&&S.remain){g.save();small();g.drawImage(S.remain,0,0,w,h);g.restore()}
   }
   g.restore();
   if(S.fly)drawFly(S,dt);
+}
+function stepState(S,dt){
+  const st=S.state;
+  if(st==='idle'||st==='peeling'||st==='clean')updateHeat(S,dt);
+  if(st==='idle'||st==='peeling')updateSoak(S,dt);
+  if(st==='peeling')updatePeel(S,dt);else Snd.peel(0,0);
+  if(st==='clean')updateClean(S,dt);
+  if(S.sprayP&&(st==='clean'||st==='idle'||st==='peeling'))sprayAt(S,dt);
+  if(S.residDirty){renderResidue(S);S.residDirty=false}
+  if(G.job&&!G.modal&&st!=='result')G.job.t+=dt;
+  Snd.loop('heat',!!S.heatP);Snd.loop('spray',!!S.sprayP);
 }
 let lastT=performance.now();
 function frame(now){
@@ -917,109 +1304,167 @@ function frame(now){
     g.setTransform(DPR,0,0,DPR,0,0);g.globalAlpha=1;g.globalCompositeOperation='source-over';
     if(bg)g.drawImage(bg,0,0,GW,GH);
     if(cur)drawCur(dt,now);
-    drawParts(dt);
-    if(TP&&cur&&cur.ptr!=null){g.save();g.beginPath();g.arc(TP.x,TP.y,24,0,TAU);g.strokeStyle='rgba(29,27,46,.45)';g.lineWidth=6;g.stroke();g.strokeStyle='rgba(255,255,255,.9)';g.lineWidth=2.5;g.stroke();g.restore()}
-    hud(false);
+    drawParts(dt);drawTool(now);hud();
   }
   requestAnimationFrame(frame);
 }
 
-/* pointer on game canvas */
-function toLocal(S,ex,ey){const r=cv.getBoundingClientRect(),x=ex-r.left,y=ey-r.top;return{x:(x-S.cx)/S.k+S.w/2,y:(y-S.cy)/S.k+S.h/2}}
+/* ---------- input ---------- */
 cv.addEventListener('pointerdown',e=>{
-  Snd.init();const S=cur;if(!S||S.ptr!=null||S.appear<1)return;
-  if(S.state!=='idle'&&S.state!=='peeling')return;
-  e.preventDefault();lxT=e.clientX/GW;
-  const p=toLocal(S,e.clientX,e.clientY);setTP(e);
-  S.arm=null;
-  if(S.state==='peeling'&&!onFlap(S,p)){S.state='idle';S.P=null;S.P0=null;S.fold=null;S.tearAcc=0;S.sf=0;S.tries=(S.tries||0)+1;Snd.pop()}
-  if(S.state==='idle'){
-    S.zone=Math.max(14,40/S.k);
-    if(isEdge(S,p.x,p.y,S.zone))startPeel(S,p);
-    else if(alphaAt(S,p.x,p.y)>100)S.arm={x:p.x,y:p.y};
-    else{flashWarn('撳住貼紙再拉，就會由邊開始撕');return}
-  }
-  S.ptr=e.pointerId;S.down=p;S.grabT=0;S.v=0;S.moveAcc=0;if(S.P)S.base={...S.P};
-  try{cv.setPointerCapture(e.pointerId)}catch(_){}
-});
-// is this press on the part that's already lifted (or right at the fold)?
-function onFlap(S,p){const f=S.fold;if(!f)return false;if(Math.hypot(p.x-S.P.x,p.y-S.P.y)<50/S.k)return true;const d=p.x*f.nx+p.y*f.ny-f.md;if(Math.abs(d)<36/S.k)return true;if(d<0)return false;return alphaAt(S,p.x-2*d*f.nx,p.y-2*d*f.ny)>100}
-function startPeel(S,P0){S.state='peeling';S.P0={...P0};S.P={...P0};S.base={...P0};S.pull=0;computeCone(S);S.stuck=isStuck(S,P0);S.adhNow=adhAt(S,P0.x,P0.y)}
-let TP=null;
-function setTP(e){const r=cv.getBoundingClientRect();TP={x:e.clientX-r.left,y:e.clientY-r.top}}
-cv.addEventListener('pointermove',e=>{
-  lxT=clamp(e.clientX/GW,0,1);const S=cur;if(!S||e.pointerId!==S.ptr)return;
-  setTP(e);
-  if(S.arm){
-    // pressed inside the sticker: once the finger moves, start from the edge behind the drag direction
-    const p=toLocal(S,e.clientX,e.clientY),dx=p.x-S.arm.x,dy=p.y-S.arm.y,L=Math.hypot(dx,dy);
-    if(L*S.k<10)return;
-    const ux=dx/L,uy=dy/L;let qx=S.arm.x,qy=S.arm.y;
-    for(let t=0;t<S.w+S.h;t+=S.cs*.4){qx=S.arm.x-ux*t;qy=S.arm.y-uy*t;if(alphaAt(S,qx,qy)<=100)break}
-    startPeel(S,{x:qx+ux*S.cs*.3,y:qy+uy*S.cs*.3});S.arm=null;S.down=p;S.grabT=0;S.v=0;S.moveAcc=0;
+  Snd.init();const S=cur;if(!S||S.appear<1||G.modal)return;e.preventDefault();setTP(e);lxT=e.clientX/GW;
+  if(G.ptr!=null&&G.ptr!==e.pointerId)return;
+  G.ptr=e.pointerId;try{cv.setPointerCapture(e.pointerId)}catch(_){}
+  const p=toLocal(S,e.clientX,e.clientY),tool=G.tool,st=S.state;G.last={p,t:performance.now(),sx:e.clientX,sy:e.clientY};
+  if(st==='idle'||st==='peeling'){
+    if(tool==='spray'){S.sprayP=p;tipOnce('soak','喺貼紙<b>邊位</b>噴<b>除膠劑</b>，等幾秒滲入去就易撕啲。<b>紙標籤</b>濕咗會好易爛！');return}
+    if(tool==='heat'){if(G.job.conds.includes('noheat')){flashWarn('客人話唔准用風筒！');return}S.heatP=p;tipOnce('heat','<b>風筒</b>焗熱會令膠軟啲、易撕啲，但<b>焗過龍</b>：熱感紙會燶黑、膠會溶到更黐。');return}
+    if(st==='peeling'&&onFlap(S,p)){S.ptr=e.pointerId;S.grip=tool==='tweezers'?'tweezers':'finger';S.base={...S.P};S.down=p;S.grabT=0;S.v=0;S.moveAcc=0;return}
+    const edge=isEdge(S,p.x,p.y,Math.max(14,34/S.k));
+    if(!edge){flashWarn(alphaAt(S,p.x,p.y)>100?'要喺貼紙邊位開始':'撳喺貼紙邊位');return}
+    if(st==='peeling')layBack(S);
+    if(tool==='scraper'){let ux=S.cent.x-p.x,uy=S.cent.y-p.y;const l=Math.hypot(ux,uy)||1;S.wedge={start:{...p},lp:{...p},u:{x:ux/l,y:uy/l},push:0,stuck:isStuck(S,p)};tipOnce('wedge','<b>刮片</b>：撳住貼紙邊，<b>向貼紙入面推</b>就撬得起。推得太快、或者硬撬黐實嘅角，會刮花。');return}
+    if(tool==='tweezers'){if(!isStuck(S,p)||softAt(S,p)>.5)startPeel(S,p,e.pointerId,'tweezers',p);else{flashWarn('夾唔起！先用指甲刮起，或者用風筒焗熱');Snd.pop()}return}
+    const need=needRubs(S,p);
+    if(need<=0){startPeel(S,p,e.pointerId,'finger',p);return}
+    S.rub={x:p.x,y:p.y,need,prog:0,dir:null,lp:{...p},stuck:isStuck(S,p)};
+    tipOnce('rub','用<b>指甲</b>喺貼紙邊<b>來回刮</b>，刮起個角先拉得起。有啲角黐得特別實，可以試第二隻角。');
     return;
   }
-  if(S.state!=='peeling')return;
-  const evs=e.getCoalescedEvents?e.getCoalescedEvents():[e];
-  for(const ev of(evs.length?evs:[e])){const p=toLocal(S,ev.clientX,ev.clientY);const NP={x:S.base.x+GAIN*(p.x-S.down.x),y:S.base.y+GAIN*(p.y-S.down.y)};S.moveAcc+=Math.hypot(NP.x-S.P.x,NP.y-S.P.y);S.P=NP}
+  if(st==='clean'){if(tool==='scraper')S.scr={lp:p};else if(tool==='spray')S.sprayP=p;else if(tool==='tape'){tapeDab(S,p);tipOnce('tape','<b>膠紙</b>黐走紙屑，唔會刮花表面，但黐唔走殘膠。')}else if(tool==='heat'){if(G.job.conds.includes('noheat')){flashWarn('客人話唔准用風筒！');return}S.heatP=p}return}
 });
-const endPtr=e=>{const S=cur;TP=null;if(S&&e.pointerId===S.ptr){S.ptr=null;if(S.arm){S.arm=null;flashWarn('撳住貼紙，再慢慢拉')}}};
+cv.addEventListener('pointermove',e=>{
+  lxT=clamp(e.clientX/GW,0,1);if(e.pointerType==='mouse'||G.ptr===e.pointerId)setTP(e);
+  const S=cur;if(!S||G.ptr!==e.pointerId)return;
+  const p=toLocal(S,e.clientX,e.clientY),now=performance.now(),dtMs=now-G.last.t,mv=Math.atan2(e.clientY-G.last.sy,e.clientX-G.last.sx);
+  if(Math.hypot(e.clientX-G.last.sx,e.clientY-G.last.sy)>2)G.mvAng=mv;
+  const prev=G.last.p;G.last={p,t:now,sx:e.clientX,sy:e.clientY};
+  if(S.heatP){S.heatP=p;return}
+  if(S.sprayP){S.sprayP=p;return}
+  if(S.rub){const R=S.rub,mx=p.x-R.lp.x,my=p.y-R.lp.y,ml=Math.hypot(mx,my);
+    if(Math.hypot(p.x-R.x,p.y-R.y)*S.k>70){flashWarn(R.stuck?'呢度黐得好實，刮多幾下、試第二隻角，或者焗熱先':'未刮起！喺邊位來回刮幾下');S.rub=null;return}
+    if(ml*S.k>4){const u={x:mx/ml,y:my/ml};if(R.dir&&u.x*R.dir.x+u.y*R.dir.y<-.4){R.prog+=1/R.need;Snd.scratch();try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}
+        if(R.stuck&&heatAt(S,R)<.4&&Math.random()<.2)nick(S,R);
+        if(R.prog>=1){S.rub=null;startPeel(S,{x:R.x,y:R.y},e.pointerId,'finger',p);toast('揭起咗！','perfect');return}}
+      R.dir=u;R.lp={...p}}
+    return}
+  if(S.state==='peeling'&&S.ptr===e.pointerId){const gain=S.grip==='tweezers'?1.2:1.6;const evs=e.getCoalescedEvents?e.getCoalescedEvents():[e];
+    for(const ev of(evs.length?evs:[e])){const q=toLocal(S,ev.clientX,ev.clientY),NP={x:S.base.x+gain*(q.x-S.down.x),y:S.base.y+gain*(q.y-S.down.y)};S.moveAcc+=Math.hypot(NP.x-S.P.x,NP.y-S.P.y);S.P=NP}return}
+  if(S.wedge){wedgeMove(S,p,dtMs);return}
+  if(S.scr){scrapeSeg(S,S.scr.lp,p,dtMs);S.scr.lp=p;return}
+});
+const endPtr=e=>{const S=cur;if(G.ptr!==e.pointerId)return;G.ptr=null;if(e.pointerType!=='mouse')TP=null;if(!S)return;
+  if(S.ptr===e.pointerId)S.ptr=null;
+  if(S.rub){S.rub=null;flashWarn('未刮起，再刮多幾下')}
+  S.heatP=null;S.sprayP=null;S.scr=null;if(S.wedge){S.wedge=null;flashWarn('未撬起，再向入推多啲')}};
 cv.addEventListener('pointerup',endPtr);cv.addEventListener('pointercancel',endPtr);
+cv.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&G.ptr==null)TP=null});
 
-/* HUD */
+/* ---------- HUD ---------- */
 let warnUntil=0,lastWarn='',lastFill=-1;
-function flashWarn(t){warnUntil=performance.now()+1300;setWarn(t,'bad')}
+function flashWarn(t){warnUntil=performance.now()+1500;setWarn(t,'bad')}
 function setWarn(t,cls){if(t+cls===lastWarn)return;lastWarn=t+cls;const el=$('#hWarn');el.textContent=t;el.className='warn '+(cls||'')}
-function hud(full){
-  if(full){$('#hIdx').textContent=Math.min(G.idx+1,40);$('#hP').textContent=G.stats.perfect;$('#hR').textContent=G.stats.residue;$('#hT').textContent=G.stats.torn;
-    if(cur){const m=cur.mat;const ch=$('#hMat');ch.innerHTML=`<i class="sw sw-${cur.spec.mat}"></i><b>${m.name}</b><span style="opacity:.7">${m.tip}</span>`;ch.classList.toggle('holo',!!m.holo)}
-    const pg=$('#prog');if(pg.children.length!==40)pg.innerHTML='<span></span>'.repeat(40);[...pg.children].forEach((e,i)=>{const r=G.recs[i];e.className=r?({perfect:'p',residue:'r',torn:'t'})[r.g]:(i===G.idx?'c':'')})}
-  const S=cur;if(!S)return;
-  const T=S.state==='peeling'?S.T:0,fill=clamp(T/1.2,0,1);
-  if(Math.abs(fill-lastFill)>.004){lastFill=fill;const el=$('#hFill');el.style.width=(fill*100)+'%';el.style.background=T>1?'#ff5a4e':T>.5?'#ffcf33':'#2fb5a9'}
-  if(performance.now()<warnUntil)return;
-  if(S.state==='idle')setWarn(S.tries?`貼返落去喇 · 揀過第二個位（試咗 ${S.tries} 次）`:'揀個位，試吓揭起佢','');
-  else if(S.state==='peeling'){
-    if(S.ptr==null)setWarn(`撳返揭起嗰塊繼續 · 撳第二個位就重新揭 · ${Math.round(S.pf*100)}%`,'');
-    else if(T>1)setWarn(S.sf>.3?'黐得太實，要爛喇！':'太快！要爛喇！','bad');
-    else if(S.sf>.3)setWarn('呢度黐得好實…好易爛，可以試第二隻角','mid');
-    else if(T>.5)setWarn('慢啲…會留白底','mid');
-    else if(S.A>0)setWarn('方向偏咗，向貼紙中間拉','mid');
-    else setWarn(`好！保持呢個速度 · ${Math.round(S.pf*100)}%`,'ok');
-  }else setWarn('','');
-}
+function setMeter(label,fill,col){$('#mLabel').textContent=label;if(Math.abs(fill-lastFill)>.004||col!==setMeter.c){lastFill=fill;setMeter.c=col;const el=$('#hFill');el.style.width=(clamp(fill,0,1)*100)+'%';el.style.background=col}}
+function setTools(list,sel){G.tools=list;G.tool=sel||list[0];document.querySelectorAll('.tool').forEach(b=>{b.classList.toggle('off',!list.includes(b.dataset.tool));b.classList.toggle('on',b.dataset.tool===G.tool);const lv=upg(b.dataset.tool);let s=b.querySelector('.lv');if(lv){if(!s){s=document.createElement('span');s.className='lv';b.appendChild(s)}s.textContent='+'+lv}else if(s)s.remove()})}
+document.querySelectorAll('.tool').forEach(b=>b.addEventListener('click',()=>{if(!G.tools.includes(b.dataset.tool))return;if(b.dataset.tool==='heat'&&G.job&&G.job.conds.includes('noheat')){flashWarn('客人話唔准用風筒！');return}setTools(G.tools,b.dataset.tool);Snd.pop()}));
+let actFn=null;function setAct(label,fn){const b=$('#btnAct');actFn=fn;b.classList.toggle('hide',!label);if(label)b.textContent=label}
+$('#btnAct').onclick=()=>{actFn&&actFn()};
+let tipTO=0;function tipOnce(key,html){if(DB.seen[key])return;DB.seen[key]=1;save();const el=$('#tip');el.innerHTML=html;el.classList.add('show');clearTimeout(tipTO);tipTO=setTimeout(()=>el.classList.remove('show'),5200)}
 let toastTO=0;
 function toast(html,cls){const el=$('#toast');el.innerHTML=html;el.className='toast '+cls;void el.offsetWidth;el.classList.add('show');clearTimeout(toastTO);toastTO=setTimeout(()=>el.classList.remove('show'),1300)}
-
-/* run flow */
-function startRun(){
-  const rnd=()=>(Math.random()*2147483647)|0;
-  const easy=()=>{for(let k=0;k<200;k++){const s=rnd(),sp=genSticker(s);if((sp.mat==='vinyl'||sp.mat==='paper')&&sp.w>=200)return s}return rnd()};
-  G.deck=Array.from({length:40},(_,i)=>i<3?easy():rnd());G.idx=0;G.stats={perfect:0,residue:0,torn:0,score:0};G.recs=[];G.hint=true;
-  G.run++;G.streak=0;G.bestStreak=0;PARTS.length=0;
-  show('game');layoutGame();nextSticker();
-  if(!DB.seenTut)$('#tut').classList.add('on');
-}
-// iOS Safari caps total canvas memory, so free each sticker's buffers right away
-function dispose(S){if(!S)return;for(const k of['tex','front','backFx','back','backBase','resid','resMask','tmp','ghost','remain'])if(S[k]){S[k].width=S[k].height=0}}
-function nextSticker(){
-  dispose(cur);cur=null;
-  if(G.idx>=40){endRun();return}
-  if(G.idx>=3)G.hint=false;else G.hint=true;
-  cur=setupSticker(G.deck[G.idx]);buildBg();hud(true);lastFill=-1;
-}
-function endRun(){
-  cur=null;const s=G.stats,b=DB.best;
-  const isBest=!b||s.perfect>b.perfect||(s.perfect===b.perfect&&s.score>b.score);
-  if(isBest)DB.best={perfect:s.perfect,score:s.score,t:Date.now()};save();
-  $('#rRate').textContent=Math.round(s.perfect/40*100)+'%';$('#rP').textContent=s.perfect;$('#rR').textContent=s.residue;$('#rT').textContent=s.torn;$('#rS').textContent=s.score;$('#rC').textContent=G.bestStreak;
-  $('#rBest').innerHTML=isBest?'<span class="newbest">新紀錄！</span>':`<div class="best">最佳：${DB.best.perfect}/40 完美 · ${DB.best.score} 分</div>`;
-  const gr=$('#rGrid');gr.innerHTML='';
-  for(const rec of G.recs){const d=document.createElement('div');d.className='g';const c=renderRecord(rec,54/Math.max(rec.w,rec.h)*DPR);d.appendChild(c);
-    const bd=document.createElement('span');bd.className='badge '+(rec.g==='perfect'?'p':rec.g==='torn'?'t':'');d.appendChild(bd);gr.appendChild(d)}
-  show('result');Snd.chime();
+function hud(){
+  const S=cur,J=G.job;if(!S||!J)return;
+  const tm=$('#jsTm'),t=Math.floor(J.t);tm.textContent=J.limit?`${Math.max(0,J.limit-t)}s`:`${t}s`;tm.classList.toggle('late',!!J.limit&&t>J.limit);
+  const st=S.state;
+  if(st==='idle'||st==='peeling'){const T=S.state==='peeling'?S.T:0;setMeter('張力',T/1.2,T>1?'#ff5a4e':T>.5?'#ffcf33':'#2fb5a9')}
+  else if(st==='clean'){const c=1-clamp((S.dirt||0)/Math.max(.01,S.dirt0),0,1);setMeter('清潔',c,'#2fb5a9')}
+  if(performance.now()<warnUntil)return;
+  if(st==='idle')setWarn(S.rub?(S.rub.stuck?'好實…繼續刮，或者試第二隻角':'繼續來回刮…'):S.wedge?(S.wedge.stuck&&softAt(S,S.wedge.start)<.45?'好實…硬撬會刮花':'繼續向入推…'):S.tries?`貼返落去喇 · 試第二個位（試咗 ${S.tries} 次）`:'揀個邊位：指甲刮、鉗夾、刮片撬；黐實就焗熱或者噴除膠劑','');
+  else if(st==='peeling'){const T=S.T;
+    if(S.ptr==null)setWarn(`撳返揭起嗰塊繼續 · 撳第二個邊位就重新揭 · ${Math.round(S.pf*100)}%`,'');
+    else if(T>1)setWarn(S.grip==='tweezers'?'太大力，鉗會甩！':S.sf>.3?'黐得太實，要爛喇！':'太快！要爛喇！','bad');
+    else if(S.sf>.3)setWarn('呢度黐得好實…好易爛，可以焗熱或者試第二隻角','mid');
+    else if(T>.5)setWarn('慢啲…會留低紙屑','mid');
+    else if(S.A>0)setWarn('方向偏咗，向貼紙中間拉','mid');
+    else setWarn(`好！保持呢個速度 · ${Math.round(S.pf*100)}%`,'ok')}
+  else if(st==='clean')setWarn(`清潔度 ${Math.round((1-clamp((S.dirt||0)/Math.max(.01,S.dirt0),0,1))*100)}% · 刮片刮紙屑，殘膠要先噴除膠劑`,'');
+  else setWarn('','');
 }
 
+/* ================= jobs ================= */
+const CUST=[{n:'陳太',c:'#ff9ec7'},{n:'阿 Ken',c:'#9fd8ff'},{n:'Mandy',c:'#c9b6ff'},{n:'李伯',c:'#ffc09f'},{n:'小美',c:'#9ee6c4'},{n:'Jason',c:'#ffe27a'},{n:'王小姐',c:'#ff8a9a'},{n:'肥仔',c:'#b8f0a8'}];
+const OBJN={laptop:'手提電腦',bottle:'水樽',notebook:'筆記簿',phone:'電話殼',box:'紙盒',pack:'包裝袋',fridge:'雪櫃',board:'滑板'};
+const CONDN={noheat:'唔准用風筒',time:'限時 35 秒',perfect:'要原張完美'};
+function makeJob(n){
+  const d=clamp(n/30,0,1),R=Math.random,rnd=()=>(R()*2147483647)|0,cust=CUST[Math.floor(R()*CUST.length)];
+  const type='remove';
+  const J={type,n,d,cust,seed:rnd(),t:0,conds:[],reward:Math.round(20+25*d+R()*10)};
+  {
+    J.pool=n<2?'kawaii':R()<.5?'label':'kawaii';J.spec=genSticker2(J.seed,J.pool);
+    J.spec.surface=J.pool==='label'?(J.spec.surface||pick(R,['box','pack'])):pick(R,['laptop','bottle','phone','notebook','fridge','board']);
+    J.stuck=n<1?0:Math.min(3,Math.floor(R()*(1.3+2.5*d)));J.preLift=R()<.55-.4*d;
+    J.glue=J.pool==='label'?.3+.55*d*R()+.15:.06+.28*d*R();J.adhVar=.6+.7*d;
+    if(n>=4&&R()<.18)J.conds.push('noheat');if(n>=6&&R()<.2)J.conds.push('time');if(n>=3&&R()<.15)J.conds.push('perfect');
+    J.limit=J.conds.includes('time')?35:null;J.par=32+J.glue*30+J.stuck*6;
+    const o=OBJN[J.spec.surface]||'嘢';
+    J.text=pick(R,[`呢個${o}要轉送人，幫我撕走張${J.spec.name}，唔好留膠！`,`張${J.spec.name}貼咗好耐，幫我撕咗佢，乾手淨腳！`,`想換新貼紙，幫我撕走${o}上面嗰張${J.spec.name}。`,`${o}要放上網賣，張${J.spec.name}一定要撕得乾淨！`]);
+  }
+  if(J.conds.length)J.reward=Math.round(J.reward*1.4);
+  return J;
+}
+function startShift(){G.sess={jobs:0,coins:0,stars:0,perfect:0};G.combo=0;show('game');layoutGame();nextJob()}
+function nextJob(){
+  dispose(cur);cur=null;PARTS.length=0;buildBg();
+  const J=makeJob(DB.jobs);G.job=J;
+  $('#jcAv').textContent=J.cust.n[0];$('#jcAv').style.background=J.cust.c;$('#jcName').textContent=J.cust.n;$('#jcNo').textContent=`第 ${DB.jobs+1} 單 · ${rankOf(DB.stars)}`;
+  $('#jcReq').textContent='「'+J.text+'」';
+  const c=$('#jcCv'),pr=renderArt(J.spec,96/Math.max(J.spec.w,J.spec.h)*DPR);c.width=pr.width;c.height=pr.height;c.getContext('2d').drawImage(pr,0,0);c.style.width=(J.spec.w/Math.max(J.spec.w,J.spec.h)*96)+'px';pr.width=0;
+  const m=MATS[J.spec.mat];
+  $('#jcMeta').innerHTML=`<span class="cond" style="margin:0;background:#fff;border:2px solid var(--ink)"><i class="sw sw-${J.spec.mat}" style="display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:-1px"></i> ${m.name}</span><br>`+
+    `黐力：${['正常','有啲實','好實','超實'][J.stuck]||'正常'}<br>殘膠：${J.glue>.5?'好多':J.glue>.25?'有啲':'少'}<br>`+
+    `報酬：<i class="coin" style="vertical-align:-3px"></i> ${J.reward}`+(J.conds.length?'<br>'+J.conds.map(k=>`<span class="cond" style="margin:2px 2px 0 0">${CONDN[k]}</span>`).join(''):'');
+  $('#jsAv').textContent=J.cust.n[0];$('#jsAv').style.background=J.cust.c;$('#jsReq').innerHTML=J.text+J.conds.map(k=>`<span class="cond">${CONDN[k]}</span>`).join('');
+  $('#hJob').textContent=`第 ${DB.jobs+1} 單 · ${rankOf(DB.stars)}`;$('#hCoins').textContent=DB.coins;
+  const hc=$('#hCombo');hc.style.display=G.combo>1?'':'none';hc.textContent=`連擊 ×${G.combo}`;
+  openModal('jobCard');
+}
+function acceptJob(){
+  closeModal('jobCard');const J=G.job;J.t=0;
+  cur=setupSticker(J.spec,{stuck:J.stuck,preLift:J.preLift,glue:J.glue,adhVar:J.adhVar});setTools(['finger','tweezers','heat','spray','scraper'],'finger');
+  cur.job=J;setAct(null);buildBg();lastFill=-1;
+}
+function finishJob(S){
+  if(S!==cur||S.state==='result')return;const J=G.job;const prevState=S.state;S.state='result';setAct(null);S.heatP=S.sprayP=S.scr=null;
+  const tScore=J.limit?(J.t<=J.limit?100:Math.max(0,100-(J.t-J.limit)*6)):clamp(100-(J.t-J.par)*2.5,30,100);
+  const rows=[];let total;
+  {
+    const rec=S.rec,gp=rec?rec.g:'torn';
+    const stk=gp==='perfect'?100:gp==='residue'?clamp(Math.round(92-rec.rf*380),25,90):Math.round(8+(rec?rec.pf:0)*25);
+    const dirt=S.torn?1:dirtOf(S),cl=S.torn?0:Math.round(clamp(100-dirt*420,0,100));
+    const burnF=S.cells.filter(c=>c.burn>.35).length/S.cells.length,pen=Math.round(burnF*120+S.scratches.length*7);
+    rows.push(['貼紙完整',stk],['表面乾淨',cl],['速度',Math.round(tScore)]);if(pen)rows.push(['燶/刮花',-pen]);
+    total=stk*.45+cl*.4+tScore*.15-pen;if(J.conds.includes('perfect')&&gp!=='perfect'){total*=.55;rows.push(['唔係完美','×0.55'])}
+    if(gp==='perfect'){DB.perfect++;G.sess.perfect++}
+  }
+  total=clamp(Math.round(total),0,100);
+  const stars=total>=88?3:total>=70?2:total>=45?1:0;
+  G.combo=stars===3?G.combo+1:0;DB.bestCombo=Math.max(DB.bestCombo||0,G.combo);
+  const coins=Math.round(J.reward*[0,.45,.8,1][stars]*(1+.1*Math.min(5,Math.max(0,G.combo-1))));
+  DB.jobs++;DB.stars+=stars;DB.coins+=coins;save();G.sess.jobs++;G.sess.coins+=coins;G.sess.stars+=stars;
+  $('#rsTitle').textContent=['客人唔收貨…','都OK','做得好！','完美！'][stars];
+  $('#rsStars').innerHTML=[0,1,2].map(i=>`<i class="${i<stars?'on':''}" style="animation-delay:${.15+i*.18}s"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg></i>`).join('');
+  $('#rsCoin').innerHTML=`<i class="coin"></i> +${coins}`+(G.combo>1?` <span class="cond">連擊 ×${G.combo}</span>`:'');
+  $('#rsBrk').innerHTML=rows.map(([k,v])=>typeof v==='number'&&v>=0?`<span>${k}</span><div class="bar"><i style="width:${v}%;background:${v>=85?'#2fb5a9':v>=60?'#ffcf33':'#ff5a4e'}"></i></div><b>${v}</b>`:`<span>${k}</span><span></span><b style="color:#d23">${v}</b>`).join('')+`<span>總分</span><span></span><b>${total}</b>`;
+  setTimeout(()=>{openModal('resCard');stars?Snd.coin():Snd.fail();if(stars===3)burst(GW/2,GH*.3,200,100)},prevState==='fly'?200:500);
+  $('#hCoins').textContent=DB.coins;
+}
+function openModal(id){G.modal=true;$('#'+id).classList.add('on')}
+function closeModal(id){$('#'+id).classList.remove('on');G.modal=!!document.querySelector('#game .modal.on')}
+function stopShift(){
+  const S=G.sess||{jobs:0,coins:0,stars:0,perfect:0};
+  $('#sumBody').innerHTML=`<div class="rank">${rankOf(DB.stars)}</div><div class="brk" style="grid-template-columns:1fr auto;text-align:left"><span>今次做咗</span><b>${S.jobs} 單</b><span>攞到</span><b>${S.stars} ★</b><span>完美原張</span><b>${S.perfect}</b><span>賺咗</span><b><i class="coin" style="vertical-align:-3px"></i> ${S.coins}</b><span>總星數</span><b>${DB.stars} ★</b></div>`;
+  closeModal('resCard');closeModal('jobCard');openModal('sumCard');
+}
+function dispose(S){if(!S)return;for(const k of['tex','front','backFx','back','ghost','remain','rcv'])if(S[k]){S[k].width=S[k].height=0}}
 /* ================= album ================= */
 const page=$('#page');
 const AL={cur:0,sel:null,pw:0,ph:0,U:1,cache:new Map(),tcache:new Map()};
@@ -1118,23 +1563,36 @@ $('#pgSave').onclick=()=>{
 };
 $('#pgAdd').onclick=()=>{DB.pages.push([]);AL.cur=DB.pages.length-1;AL.sel=null;save();renderPage()};
 
+Object.assign(Snd,{
+  loops:{},
+  loop(name,on){if(!this.ac||!this.out)return;let L=this.loops[name];if(!L){if(!on)return;const ac=this.ac,src=ac.createBufferSource();src.buffer=this.buf;src.loop=true;const f=ac.createBiquadFilter();if(name==='heat'){f.type='lowpass';f.frequency.value=380}else{f.type='highpass';f.frequency.value=3200}const gn=ac.createGain();gn.gain.value=0;src.connect(f).connect(gn).connect(this.out);src.start();L=this.loops[name]={gn,on:false}}
+    if(L.on===on)return;L.on=on;L.gn.gain.setTargetAtTime(this.on&&on?(name==='heat'?.6:.28):0,this.ac.currentTime,.05)},
+  bubble(){this.tone(700+Math.random()*500,.08,.22);this.burst(.05,1500,.25,'bandpass')},
+  squeak(){const n=performance.now();if(n-(this._sq||0)<110)return;this._sq=n;this.burst(.06,1600+Math.random()*900,.32,'bandpass')},
+  coin(){this.tone(1046,.12,.22);this.tone(1568,.28,.2,.08)},
+  fail(){this.tone(330,.3,.25);this.tone(233,.45,.2,.14)},
+});
+
 /* ================= wiring ================= */
-$('#btnStart').onclick=()=>{Snd.init();startRun()};
+$('#btnStart').onclick=()=>{Snd.init();startShift()};
+$('#btnShop').onclick=()=>show('shop');
+$('#btnShopBack').onclick=()=>show('home');
 $('#btnAlbum').onclick=openAlbum;
 $('#btnAlbumBack').onclick=()=>show('home');
-$('#btnToAlbum').onclick=openAlbum;
-$('#btnAgain').onclick=startRun;
-$('#btnHome2').onclick=()=>show('home');
-$('#btnTut').onclick=()=>{$('#tut').classList.remove('on');DB.seenTut=true;save()};
-$('#btnQuit').onclick=()=>{if(confirm('放棄今局？已經撕咗嘅貼紙會留喺貼紙簿。')){dispose(cur);cur=null;G.run++;show('home')}};
-$('#btnMute').onclick=()=>{Snd.on=!Snd.on;$('#btnMute').style.opacity=Snd.on?1:.45;Snd.peel(0,0)};
+$('#btnAccept').onclick=acceptJob;
+$('#btnNext').onclick=()=>{closeModal('resCard');nextJob()};
+$('#btnStop').onclick=()=>{if(cur&&cur.state!=='result'&&!confirm('停工？做緊嘅呢單會取消。'))return;stopShift()};
+$('#btnStop2').onclick=stopShift;
+$('#btnResume').onclick=()=>{closeModal('sumCard');G.sess={jobs:0,coins:0,stars:0,perfect:0};nextJob()};
+$('#btnHome').onclick=()=>{closeModal('sumCard');dispose(cur);cur=null;G.job=null;show('home')};
+$('#btnMute').onclick=()=>{Snd.on=!Snd.on;$('#btnMute').style.opacity=Snd.on?1:.45;Snd.peel(0,0);Snd.loop('heat',0);Snd.loop('spray',0)};
 $('#hBook').onclick=()=>{};
 let rzT=0;window.addEventListener('resize',()=>{clearTimeout(rzT);rzT=setTimeout(onResize,150)});function onResize(){
   if($('#game').classList.contains('on'))layoutGame();
   if($('#album').classList.contains('on')){layoutAlbum();renderPage()}
   if($('#home').classList.contains('on'))buildHome();
 }
-document.addEventListener('visibilitychange',()=>{if(document.hidden)Snd.peel(0,0);else if(Snd.ac&&Snd.ac.state!=='running')Snd.ac.resume().catch(()=>{})});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){Snd.peel(0,0);Snd.loop('heat',0);Snd.loop('spray',0)}else if(Snd.ac&&Snd.ac.state!=='running')Snd.ac.resume().catch(()=>{})});
 for(const ev of['touchend','click','pointerup','keydown'])document.addEventListener(ev,()=>Snd.init(),{capture:true,passive:true});
 buildHome();
 requestAnimationFrame(frame);
