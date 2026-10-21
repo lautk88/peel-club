@@ -525,13 +525,13 @@ function smoothAlpha(c,f){const w=c.width,h=c.height,t=mkCanvas(Math.max(1,w/f),
   const x=c.getContext('2d');x.clearRect(0,0,w,h);x.imageSmoothingQuality='high';x.drawImage(t,0,0,w,h);t.width=t.height=0;
   const id=x.getImageData(0,0,w,h),d=id.data;for(let i=0;i<d.length;i+=4){d[i]=d[i+1]=d[i+2]=255;d[i+3]=clamp((d[i+3]-128)*5+128,0,255)}x.putImageData(id,0,0)}
 function buildArt(photo,mask,W,H,box){
-  const[x0,y0,x1,y1]=box,bw=x1-x0+1,bh=y1-y0+1,md=Math.max(bw,bh),S=Math.min(2.4,560/md),B=Math.round(md*S*.05)+8,pad=B+10;
+  const[x0,y0,x1,y1]=box,bw=x1-x0+1,bh=y1-y0+1,md=Math.max(bw,bh),S=Math.min(2.4,560/md),B=Math.max(4,Math.round(W/160*S)),pad=B+10; // border matches the outline shown in review
   const cw=Math.round(bw*S)+pad*2,ch=Math.round(bh*S)+pad*2;
   const sm=mkCanvas(cw,ch),sx=sm.getContext('2d');sx.imageSmoothingQuality='high';const mc=maskCanvas(mask,W,H,x0,y0,bw,bh);sx.drawImage(mc,pad,pad,bw*S,bh*S);mc.width=0;smoothAlpha(sm,3);
   const obj=mkCanvas(cw,ch),ox=obj.getContext('2d');ox.imageSmoothingQuality='high';ox.drawImage(photo,x0,y0,bw,bh,pad,pad,bw*S,bh*S);
   const id=ox.getImageData(0,0,cw,ch),d=id.data;for(let i=0;i<d.length;i+=4){const r=d[i],g=d[i+1],b=d[i+2],Y=.299*r+.587*g+.114*b;d[i]=clamp((Y+(r-Y)*1.18-128)*1.06+130,0,255);d[i+1]=clamp((Y+(g-Y)*1.18-128)*1.06+130,0,255);d[i+2]=clamp((Y+(b-Y)*1.18-128)*1.06+130,0,255)}ox.putImageData(id,0,0);
   ox.globalCompositeOperation='destination-in';ox.drawImage(sm,0,0);
-  const bd=mkCanvas(cw,ch),bx=bd.getContext('2d');for(const rr2 of[B*.5,B])for(let k=0;k<28;k++){const a=k/28*TAU;bx.drawImage(sm,Math.cos(a)*rr2,Math.sin(a)*rr2)}smoothAlpha(bd,4);
+  const bd=mkCanvas(cw,ch),bx=bd.getContext('2d');for(const rr2 of[B*.5,B])for(let k=0;k<28;k++){const a=k/28*TAU;bx.drawImage(sm,Math.cos(a)*rr2,Math.sin(a)*rr2)}smoothAlpha(bd,2);
   const out=mkCanvas(cw,ch),o=out.getContext('2d');
   o.shadowColor='rgba(29,27,46,.3)';o.shadowBlur=2;o.drawImage(bd,0,0);o.shadowColor='transparent';
   o.drawImage(obj,0,0);
